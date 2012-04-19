@@ -1,0 +1,53 @@
+<?php 
+
+$this->headScript()->captureStart();?>
+$(function(){
+		var btnUpload=$('#upload');
+		var status=$('#status');
+		new AjaxUpload(btnUpload, {
+			action: '<?php echo $this->url(array('controller'=>'uploader','action'=>'index'));?>',
+			name: 'uploadfile',
+			onSubmit: function(file, ext){
+				 if (! (ext && /^(jpg|png|jpeg|gif)$/.test(ext))){ 
+                    // extension is not allowed 
+					status.text('Only JPG, PNG or GIF files are allowed');
+					return false;
+				}
+				status.text('Uploading...');
+			},
+			onComplete: function(file, response){
+				//On completion clear the status
+				status.text('');
+				//Add uploaded file to list
+				if(response=="true"){
+					$('<li></li>').appendTo('#files').html('<img src="<?php echo $this->baseUrl('upload/'.$this->user);?>/thumb'+file+'" alt="" /><br />'+file).addClass('success');
+				} else{
+					$('<li></li>').appendTo('#files').text(file+'<div>'+response+'</div>').addClass('error');
+					
+				}
+			}
+		});
+		$('.files').sortable({connectWith: "ul",items:"li:not(.listtitle)"});
+		$('.files').disableSelection();
+	});
+<?php $this->headScript()->captureEnd();?>
+
+<div id="upload" ><span>Upload File</span></div><span id="status" ></span>
+		
+<ul id="files" class="files" >
+<li class="listtitle"><?php echo $this->t->_('FILE_DISP');?></li>
+<?php 
+
+if ($dp = opendir(APPLICATION_PATH.'/../upload/'.$this->user)) 
+{
+	while($file = readdir($dp)) {
+		if (($file!=".")&&($file!="..")&&is_file(APPLICATION_PATH.'/../upload/'.$this->user.'/'.$file)&&!strstr($file, "thumb"))
+		echo '<li class="success">'.$this->image('/upload/'.$this->user.'/thumb'.$file,$file,$file," "," ").'</li>';
+	}
+}
+else $this->log->debug("errore");
+?>
+</ul>
+<ul class="files" id="framebox">
+<li class="listtitle"><?php echo $this->t->_('FILE_ON_WORK');?></li>
+</ul>

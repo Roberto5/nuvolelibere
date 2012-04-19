@@ -1,0 +1,287 @@
+<logEntry><timestamp>2012-04-16T19:13:27+02:00</timestamp><message>Application error</message><priority>2</priority><priorityName>CRIT</priorityName><info>exception 'Zend_View_Exception' with message 'script 'layout.phtml' not found in path (/var/www/gifeditor/application/layouts/scripts/:/var/www/gifeditor/application/views/scripts/)' in /var/www/gifeditor/library/Zend/View/Abstract.php:980
+Stack trace:
+#0 /var/www/gifeditor/library/Zend/View/Abstract.php(876): Zend_View_Abstract-&gt;_script('layout.phtml')
+#1 /var/www/gifeditor/library/Zend/Layout.php(796): Zend_View_Abstract-&gt;render('layout.phtml')
+#2 /var/www/gifeditor/library/Zend/Layout/Controller/Plugin/Layout.php(143): Zend_Layout-&gt;render()
+#3 /var/www/gifeditor/library/Zend/Controller/Plugin/Broker.php(331): Zend_Layout_Controller_Plugin_Layout-&gt;postDispatch(Object(Zend_Controller_Request_Http))
+#4 /var/www/gifeditor/library/Zend/Controller/Front.php(965): Zend_Controller_Plugin_Broker-&gt;postDispatch(Object(Zend_Controller_Request_Http))
+#5 /var/www/gifeditor/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front-&gt;dispatch()
+#6 /var/www/gifeditor/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap-&gt;run()
+#7 /var/www/gifeditor/index.php(27): Zend_Application-&gt;run()
+#8 {main}</info></logEntry>
+
+<logEntry><timestamp>2012-04-16T19:13:27+02:00</timestamp><message>Request Parameters</message><priority>2</priority><priorityName>CRIT</priorityName><controller>index</controller><action>index</action><module>default</module><layoutContent>&lt;style&gt;
+    a:link,
+    a:visited
+    {
+        color: #0398CA;
+    }
+
+    span#zf-name
+    {
+        color: #91BE3F;
+    }
+
+    div#welcome
+    {
+        color: #FFFFFF;
+        background-image: url(http://framework.zend.com/images/bkg_header.jpg);
+        width:  600px;
+        height: 400px;
+        border: 2px solid #444444;
+        overflow: hidden;
+        text-align: center;
+    }
+
+    div#more-information
+    {
+        background-image: url(http://framework.zend.com/images/bkg_body-bottom.gif);
+        height: 100%;
+    }
+&lt;/style&gt;
+&lt;div id="welcome"&gt;
+    &lt;h1&gt;Welcome to the &lt;span id="zf-name"&gt;Zend Framework!&lt;/span&gt;&lt;/h1&gt;
+
+    &lt;h3&gt;This is your project's main page&lt;/h3&gt;
+
+    &lt;div id="more-information"&gt;
+        &lt;p&gt;&lt;img src="http://framework.zend.com/images/PoweredBy_ZF_4LightBG.png" /&gt;&lt;/p&gt;
+        &lt;p&gt;
+            Helpful Links: &lt;br /&gt;
+            &lt;a href="http://framework.zend.com/"&gt;Zend Framework Website&lt;/a&gt; |
+            &lt;a href="http://framework.zend.com/manual/en/"&gt;Zend Framework Manual&lt;/a&gt;
+        &lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</layoutContent></logEntry>
+
+<logEntry><timestamp>2012-04-16T19:25:38+02:00</timestamp><message>Application error</message><priority>2</priority><priorityName>CRIT</priorityName><info>exception 'Zend_View_Exception' with message 'script 'layout.phtml' not found in path (/var/www/gifeditor/application/layouts/scripts/:/var/www/gifeditor/application/views/scripts/)' in /var/www/gifeditor/library/Zend/View/Abstract.php:980
+Stack trace:
+#0 /var/www/gifeditor/library/Zend/View/Abstract.php(876): Zend_View_Abstract-&gt;_script('layout.phtml')
+#1 /var/www/gifeditor/library/Zend/Layout.php(796): Zend_View_Abstract-&gt;render('layout.phtml')
+#2 /var/www/gifeditor/library/Zend/Layout/Controller/Plugin/Layout.php(143): Zend_Layout-&gt;render()
+#3 /var/www/gifeditor/library/Zend/Controller/Plugin/Broker.php(331): Zend_Layout_Controller_Plugin_Layout-&gt;postDispatch(Object(Zend_Controller_Request_Http))
+#4 /var/www/gifeditor/library/Zend/Controller/Front.php(965): Zend_Controller_Plugin_Broker-&gt;postDispatch(Object(Zend_Controller_Request_Http))
+#5 /var/www/gifeditor/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front-&gt;dispatch()
+#6 /var/www/gifeditor/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap-&gt;run()
+#7 /var/www/gifeditor/index.php(27): Zend_Application-&gt;run()
+#8 {main}</info></logEntry>
+
+<logEntry><timestamp>2012-04-16T19:25:38+02:00</timestamp><message>Request Parameters</message><priority>2</priority><priorityName>CRIT</priorityName><controller>index</controller><action>index</action><module>default</module><layoutContent>&lt;style&gt;
+    a:link,
+    a:visited
+    {
+        color: #0398CA;
+    }
+
+    span#zf-name
+    {
+        color: #91BE3F;
+    }
+
+    div#welcome
+    {
+        color: #FFFFFF;
+        background-image: url(http://framework.zend.com/images/bkg_header.jpg);
+        width:  600px;
+        height: 400px;
+        border: 2px solid #444444;
+        overflow: hidden;
+        text-align: center;
+    }
+
+    div#more-information
+    {
+        background-image: url(http://framework.zend.com/images/bkg_body-bottom.gif);
+        height: 100%;
+    }
+&lt;/style&gt;
+&lt;div id="welcome"&gt;
+    &lt;h1&gt;Welcome to the &lt;span id="zf-name"&gt;Zend Framework!&lt;/span&gt;&lt;/h1&gt;
+
+    &lt;h3&gt;This is your project's main page&lt;/h3&gt;
+
+    &lt;div id="more-information"&gt;
+        &lt;p&gt;&lt;img src="http://framework.zend.com/images/PoweredBy_ZF_4LightBG.png" /&gt;&lt;/p&gt;
+        &lt;p&gt;
+            Helpful Links: &lt;br /&gt;
+            &lt;a href="http://framework.zend.com/"&gt;Zend Framework Website&lt;/a&gt; |
+            &lt;a href="http://framework.zend.com/manual/en/"&gt;Zend Framework Manual&lt;/a&gt;
+        &lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</layoutContent></logEntry>
+
+<logEntry><timestamp>2012-04-16T19:27:17+02:00</timestamp><message>Application error</message><priority>2</priority><priorityName>CRIT</priorityName><info>exception 'Zend_View_Exception' with message 'script 'layout.phtml' not found in path (/var/www/gifeditor/application/layouts/:/var/www/gifeditor/application/views/scripts/)' in /var/www/gifeditor/library/Zend/View/Abstract.php:980
+Stack trace:
+#0 /var/www/gifeditor/library/Zend/View/Abstract.php(876): Zend_View_Abstract-&gt;_script('layout.phtml')
+#1 /var/www/gifeditor/library/Zend/Layout.php(796): Zend_View_Abstract-&gt;render('layout.phtml')
+#2 /var/www/gifeditor/library/Zend/Layout/Controller/Plugin/Layout.php(143): Zend_Layout-&gt;render()
+#3 /var/www/gifeditor/library/Zend/Controller/Plugin/Broker.php(331): Zend_Layout_Controller_Plugin_Layout-&gt;postDispatch(Object(Zend_Controller_Request_Http))
+#4 /var/www/gifeditor/library/Zend/Controller/Front.php(965): Zend_Controller_Plugin_Broker-&gt;postDispatch(Object(Zend_Controller_Request_Http))
+#5 /var/www/gifeditor/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front-&gt;dispatch()
+#6 /var/www/gifeditor/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap-&gt;run()
+#7 /var/www/gifeditor/index.php(27): Zend_Application-&gt;run()
+#8 {main}</info></logEntry>
+
+<logEntry><timestamp>2012-04-16T19:27:17+02:00</timestamp><message>Request Parameters</message><priority>2</priority><priorityName>CRIT</priorityName><controller>index</controller><action>index</action><module>default</module><layoutContent>&lt;style&gt;
+    a:link,
+    a:visited
+    {
+        color: #0398CA;
+    }
+
+    span#zf-name
+    {
+        color: #91BE3F;
+    }
+
+    div#welcome
+    {
+        color: #FFFFFF;
+        background-image: url(http://framework.zend.com/images/bkg_header.jpg);
+        width:  600px;
+        height: 400px;
+        border: 2px solid #444444;
+        overflow: hidden;
+        text-align: center;
+    }
+
+    div#more-information
+    {
+        background-image: url(http://framework.zend.com/images/bkg_body-bottom.gif);
+        height: 100%;
+    }
+&lt;/style&gt;
+&lt;div id="welcome"&gt;
+    &lt;h1&gt;Welcome to the &lt;span id="zf-name"&gt;Zend Framework!&lt;/span&gt;&lt;/h1&gt;
+
+    &lt;h3&gt;This is your project's main page&lt;/h3&gt;
+
+    &lt;div id="more-information"&gt;
+        &lt;p&gt;&lt;img src="http://framework.zend.com/images/PoweredBy_ZF_4LightBG.png" /&gt;&lt;/p&gt;
+        &lt;p&gt;
+            Helpful Links: &lt;br /&gt;
+            &lt;a href="http://framework.zend.com/"&gt;Zend Framework Website&lt;/a&gt; |
+            &lt;a href="http://framework.zend.com/manual/en/"&gt;Zend Framework Manual&lt;/a&gt;
+        &lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</layoutContent></logEntry>
+
+<logEntry><timestamp>2012-04-16T20:14:51+02:00</timestamp><message>Application error</message><priority>2</priority><priorityName>CRIT</priorityName><info>exception 'PDOException' with message 'SQLSTATE[28000] [1045] Access denied for user 'www-data'@'localhost' (using password: NO)' in /var/www/gifeditor/library/Zend/Db/Adapter/Pdo/Abstract.php:129
+Stack trace:
+#0 /var/www/gifeditor/library/Zend/Db/Adapter/Pdo/Abstract.php(129): PDO-&gt;__construct('mysql:host=;dbn...', '', '', Array)
+#1 /var/www/gifeditor/library/Zend/Db/Adapter/Pdo/Mysql.php(96): Zend_Db_Adapter_Pdo_Abstract-&gt;_connect()
+#2 /var/www/gifeditor/library/Zend/Db/Adapter/Abstract.php(858): Zend_Db_Adapter_Pdo_Mysql-&gt;_connect()
+#3 /var/www/gifeditor/library/Zend/Db/Adapter/Abstract.php(928): Zend_Db_Adapter_Abstract-&gt;quote('dddddddd', NULL)
+#4 /var/www/gifeditor/library/Zend/Auth/Adapter/DbTable.php(449): Zend_Db_Adapter_Abstract-&gt;quoteInto('`password` = md...', 'dddddddd')
+#5 /var/www/gifeditor/library/Zend/Auth/Adapter/DbTable.php(368): Zend_Auth_Adapter_DbTable-&gt;_authenticateCreateSelect()
+#6 /var/www/gifeditor/application/controllers/LoginController.php(34): Zend_Auth_Adapter_DbTable-&gt;authenticate()
+#7 /var/www/gifeditor/library/Zend/Controller/Action.php(531): LoginController-&gt;indexAction()
+#8 /var/www/gifeditor/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action-&gt;dispatch('indexAction')
+#9 /var/www/gifeditor/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard-&gt;dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#10 /var/www/gifeditor/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front-&gt;dispatch()
+#11 /var/www/gifeditor/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap-&gt;run()
+#12 /var/www/gifeditor/index.php(28): Zend_Application-&gt;run()
+#13 {main}
+
+Next exception 'Zend_Db_Adapter_Exception' with message 'SQLSTATE[28000] [1045] Access denied for user 'www-data'@'localhost' (using password: NO)' in /var/www/gifeditor/library/Zend/Db/Adapter/Pdo/Abstract.php:144
+Stack trace:
+#0 /var/www/gifeditor/library/Zend/Db/Adapter/Pdo/Mysql.php(96): Zend_Db_Adapter_Pdo_Abstract-&gt;_connect()
+#1 /var/www/gifeditor/library/Zend/Db/Adapter/Abstract.php(858): Zend_Db_Adapter_Pdo_Mysql-&gt;_connect()
+#2 /var/www/gifeditor/library/Zend/Db/Adapter/Abstract.php(928): Zend_Db_Adapter_Abstract-&gt;quote('dddddddd', NULL)
+#3 /var/www/gifeditor/library/Zend/Auth/Adapter/DbTable.php(449): Zend_Db_Adapter_Abstract-&gt;quoteInto('`password` = md...', 'dddddddd')
+#4 /var/www/gifeditor/library/Zend/Auth/Adapter/DbTable.php(368): Zend_Auth_Adapter_DbTable-&gt;_authenticateCreateSelect()
+#5 /var/www/gifeditor/application/controllers/LoginController.php(34): Zend_Auth_Adapter_DbTable-&gt;authenticate()
+#6 /var/www/gifeditor/library/Zend/Controller/Action.php(531): LoginController-&gt;indexAction()
+#7 /var/www/gifeditor/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action-&gt;dispatch('indexAction')
+#8 /var/www/gifeditor/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard-&gt;dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#9 /var/www/gifeditor/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front-&gt;dispatch()
+#10 /var/www/gifeditor/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap-&gt;run()
+#11 /var/www/gifeditor/index.php(28): Zend_Application-&gt;run()
+#12 {main}</info></logEntry>
+
+<logEntry><timestamp>2012-04-16T20:14:51+02:00</timestamp><message>Request Parameters</message><priority>2</priority><priorityName>CRIT</priorityName><controller>login</controller><action>index</action><module>default</module><username>pagliaccio</username><password>dddddddd</password><submit>Entra</submit></logEntry>
+
+<logEntry><timestamp>2012-04-16T21:53:10+02:00</timestamp><message>Page not found</message><priority>5</priority><priorityName>NOTICE</priorityName><info>exception 'Zend_Controller_Action_Exception' with message 'Action "login" does not exist and was not trapped in __call()' in /var/www/gifeditor/library/Zend/Controller/Action.php:503
+Stack trace:
+#0 /var/www/gifeditor/library/Zend/Controller/Action.php(533): Zend_Controller_Action-&gt;__call('loginAction', Array)
+#1 /var/www/gifeditor/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action-&gt;dispatch('loginAction')
+#2 /var/www/gifeditor/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard-&gt;dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#3 /var/www/gifeditor/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front-&gt;dispatch()
+#4 /var/www/gifeditor/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap-&gt;run()
+#5 /var/www/gifeditor/index.php(28): Zend_Application-&gt;run()
+#6 {main}</info></logEntry>
+
+<logEntry><timestamp>2012-04-16T21:53:10+02:00</timestamp><message>Request Parameters</message><priority>5</priority><priorityName>NOTICE</priorityName><controller>login</controller><action>login</action><module>default</module></logEntry>
+
+<logEntry><timestamp>2012-04-16T21:53:36+02:00</timestamp><message>Page not found</message><priority>5</priority><priorityName>NOTICE</priorityName><info>exception 'Zend_Controller_Action_Exception' with message 'Action "login" does not exist and was not trapped in __call()' in /var/www/gifeditor/library/Zend/Controller/Action.php:503
+Stack trace:
+#0 /var/www/gifeditor/library/Zend/Controller/Action.php(533): Zend_Controller_Action-&gt;__call('loginAction', Array)
+#1 /var/www/gifeditor/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action-&gt;dispatch('loginAction')
+#2 /var/www/gifeditor/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard-&gt;dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#3 /var/www/gifeditor/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front-&gt;dispatch()
+#4 /var/www/gifeditor/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap-&gt;run()
+#5 /var/www/gifeditor/index.php(28): Zend_Application-&gt;run()
+#6 {main}</info></logEntry>
+
+<logEntry><timestamp>2012-04-16T21:53:36+02:00</timestamp><message>Request Parameters</message><priority>5</priority><priorityName>NOTICE</priorityName><controller>login</controller><action>login</action><module>default</module></logEntry>
+
+<logEntry><timestamp>2012-04-16T21:53:38+02:00</timestamp><message>Page not found</message><priority>5</priority><priorityName>NOTICE</priorityName><info>exception 'Zend_Controller_Action_Exception' with message 'Action "login" does not exist and was not trapped in __call()' in /var/www/gifeditor/library/Zend/Controller/Action.php:503
+Stack trace:
+#0 /var/www/gifeditor/library/Zend/Controller/Action.php(533): Zend_Controller_Action-&gt;__call('loginAction', Array)
+#1 /var/www/gifeditor/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action-&gt;dispatch('loginAction')
+#2 /var/www/gifeditor/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard-&gt;dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#3 /var/www/gifeditor/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front-&gt;dispatch()
+#4 /var/www/gifeditor/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap-&gt;run()
+#5 /var/www/gifeditor/index.php(28): Zend_Application-&gt;run()
+#6 {main}</info></logEntry>
+
+<logEntry><timestamp>2012-04-16T21:53:38+02:00</timestamp><message>Request Parameters</message><priority>5</priority><priorityName>NOTICE</priorityName><controller>login</controller><action>login</action><module>default</module></logEntry>
+
+<logEntry><timestamp>2012-04-16T21:53:43+02:00</timestamp><message>Page not found</message><priority>5</priority><priorityName>NOTICE</priorityName><info>exception 'Zend_Controller_Action_Exception' with message 'Action "login" does not exist and was not trapped in __call()' in /var/www/gifeditor/library/Zend/Controller/Action.php:503
+Stack trace:
+#0 /var/www/gifeditor/library/Zend/Controller/Action.php(533): Zend_Controller_Action-&gt;__call('loginAction', Array)
+#1 /var/www/gifeditor/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action-&gt;dispatch('loginAction')
+#2 /var/www/gifeditor/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard-&gt;dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#3 /var/www/gifeditor/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front-&gt;dispatch()
+#4 /var/www/gifeditor/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap-&gt;run()
+#5 /var/www/gifeditor/index.php(28): Zend_Application-&gt;run()
+#6 {main}</info></logEntry>
+
+<logEntry><timestamp>2012-04-16T21:53:43+02:00</timestamp><message>Request Parameters</message><priority>5</priority><priorityName>NOTICE</priorityName><controller>index</controller><action>login</action><module>default</module></logEntry>
+
+<logEntry><timestamp>2012-04-16T21:53:53+02:00</timestamp><message>Page not found</message><priority>5</priority><priorityName>NOTICE</priorityName><info>exception 'Zend_Controller_Action_Exception' with message 'Action "login" does not exist and was not trapped in __call()' in /var/www/gifeditor/library/Zend/Controller/Action.php:503
+Stack trace:
+#0 /var/www/gifeditor/library/Zend/Controller/Action.php(533): Zend_Controller_Action-&gt;__call('loginAction', Array)
+#1 /var/www/gifeditor/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action-&gt;dispatch('loginAction')
+#2 /var/www/gifeditor/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard-&gt;dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#3 /var/www/gifeditor/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front-&gt;dispatch()
+#4 /var/www/gifeditor/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap-&gt;run()
+#5 /var/www/gifeditor/index.php(28): Zend_Application-&gt;run()
+#6 {main}</info></logEntry>
+
+<logEntry><timestamp>2012-04-16T21:53:53+02:00</timestamp><message>Request Parameters</message><priority>5</priority><priorityName>NOTICE</priorityName><controller>index</controller><action>login</action><module>default</module></logEntry>
+
+<logEntry><timestamp>2012-04-16T21:54:15+02:00</timestamp><message>Page not found</message><priority>5</priority><priorityName>NOTICE</priorityName><info>exception 'Zend_Controller_Action_Exception' with message 'Action "login" does not exist and was not trapped in __call()' in /var/www/gifeditor/library/Zend/Controller/Action.php:503
+Stack trace:
+#0 /var/www/gifeditor/library/Zend/Controller/Action.php(533): Zend_Controller_Action-&gt;__call('loginAction', Array)
+#1 /var/www/gifeditor/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action-&gt;dispatch('loginAction')
+#2 /var/www/gifeditor/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard-&gt;dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#3 /var/www/gifeditor/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front-&gt;dispatch()
+#4 /var/www/gifeditor/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap-&gt;run()
+#5 /var/www/gifeditor/index.php(28): Zend_Application-&gt;run()
+#6 {main}</info></logEntry>
+
+<logEntry><timestamp>2012-04-16T21:54:15+02:00</timestamp><message>Request Parameters</message><priority>5</priority><priorityName>NOTICE</priorityName><controller>index</controller><action>login</action><module>default</module></logEntry>
+
+<logEntry><timestamp>2012-04-16T21:54:51+02:00</timestamp><message>Page not found</message><priority>5</priority><priorityName>NOTICE</priorityName><info>exception 'Zend_Controller_Action_Exception' with message 'Action "login" does not exist and was not trapped in __call()' in /var/www/gifeditor/library/Zend/Controller/Action.php:503
+Stack trace:
+#0 /var/www/gifeditor/library/Zend/Controller/Action.php(533): Zend_Controller_Action-&gt;__call('loginAction', Array)
+#1 /var/www/gifeditor/library/Zend/Controller/Dispatcher/Standard.php(295): Zend_Controller_Action-&gt;dispatch('loginAction')
+#2 /var/www/gifeditor/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard-&gt;dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#3 /var/www/gifeditor/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front-&gt;dispatch()
+#4 /var/www/gifeditor/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap-&gt;run()
+#5 /var/www/gifeditor/index.php(28): Zend_Application-&gt;run()
+#6 {main}</info></logEntry>
+
+<logEntry><timestamp>2012-04-16T21:54:51+02:00</timestamp><message>Request Parameters</message><priority>5</priority><priorityName>NOTICE</priorityName><controller>index</controller><action>login</action><module>default</module></logEntry>
+

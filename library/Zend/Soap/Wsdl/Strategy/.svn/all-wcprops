@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/ageofevolution/!svn/ver/15/library/Zend/Soap/Wsdl/Strategy
+END
+AnyType.php
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/ageofevolution/!svn/ver/1/library/Zend/Soap/Wsdl/Strategy/AnyType.php
+END
+ArrayOfTypeComplex.php
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/ageofevolution/!svn/ver/15/library/Zend/Soap/Wsdl/Strategy/ArrayOfTypeComplex.php
+END
+ArrayOfTypeSequence.php
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/ageofevolution/!svn/ver/15/library/Zend/Soap/Wsdl/Strategy/ArrayOfTypeSequence.php
+END
+DefaultComplexType.php
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/ageofevolution/!svn/ver/15/library/Zend/Soap/Wsdl/Strategy/DefaultComplexType.php
+END
+Interface.php
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/ageofevolution/!svn/ver/1/library/Zend/Soap/Wsdl/Strategy/Interface.php
+END
+Composite.php
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/ageofevolution/!svn/ver/1/library/Zend/Soap/Wsdl/Strategy/Composite.php
+END
+Abstract.php
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/ageofevolution/!svn/ver/1/library/Zend/Soap/Wsdl/Strategy/Abstract.php
+END

@@ -1,0 +1,36 @@
+body {
+	background:lightblue url('../img/cloud.png') no-repeat center fixed ;
+	whidth:500px;
+	font-size: 50px;
+}
+	
+/*log rules */
+#log {
+	background:white;
+	color:black;
+	border: 2px solid red;
+}
+.priority7 {
+	background:white;
+}
+/*info*/
+.priority6 {
+	background:blue;
+}
+/*notice*/
+.priority5 {
+	background:yellow;
+}
+/*warn*/
+.priority4 {
+	background:yellow;
+}
+.priority3 {
+	background:red;
+}
+.priority2 {
+	background:red;
+}
+.priority1 {
+	background:red;
+}

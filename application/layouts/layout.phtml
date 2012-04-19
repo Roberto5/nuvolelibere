@@ -1,0 +1,76 @@
+<?php 
+//init
+$auth=Zend_Auth::getInstance();
+$ua=new Zend_Http_UserAgent();
+?>
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="UTF-8">
+	<meta name="DESCRIPTION" content="<?php echo $this->t->_('DESCRIPTION');?>" />
+	<meta name="KEYWORDS" content="gif,animate,tool,gratis" />
+	<link rel="shortcut icon" href="<?php echo $this->baseUrl(); ?>/favicon.ico" />	
+	<?php
+	try {
+		$device=$ua->getDevice();
+		$mobile=$device->getFeature('is_mobile');
+	} catch (Zend_Http_UserAgent_Exception $e) {
+		$mobile=true;
+	}
+	echo $this->headLink()->prependStylesheet($this->baseUrl() . '/common/css/css.php'.($mobile? '?l=m' : ''));
+	echo $this->headScript()->prependFile($this->baseUrl('/common/js/js.php'));
+	$this->headTitle()->setSeparator(' - ');
+	$this->headTitle('Gifeditor');
+	echo $this->headTitle();
+	?>
+	</head>
+	<body>
+		<div id="header"></div>
+		<div id="locale">language 
+			<form action="<?php echo $this->url();?>">
+				<select onchange="submit();" name="locale">
+					<option value="browser">auto</option>
+					<?php 
+					foreach ($this->t->getList() as $key => $value) {
+						echo '<option '.($_COOKIE['locale']==$key ? 'selected="selected"':'' ).' value="'.$key.'">'.$value.'</option>';
+					}
+					?>
+				</select>
+			</form>
+		</div>
+		<div class="container">
+	<?php 
+	if ($this->logger) {
+		$text="<ol>";
+		foreach ($this->logger as $value) {
+			$text.='<li class="priority'.$value['priority'].'">'.$value['timestamp'].' - '.$value['message'].' - '.$value['priorityName']."</li>";
+		}
+		$text.="</ol>";
+		echo $this->template()->spoiler($text,false,'log');
+	}
+	//nav
+	$nav['home']=array();
+	
+	?>
+			<ul id="nav">
+				<li><a href="<?php echo $this->url(array('controller'=>"index",'action'=>'index'));?>">Home</a></li>
+		<?php 
+		//user
+		if ($auth->hasIdentity()) {
+			echo '
+				<li><a href="'.$this->url(array('controller'=>"login",'action'=>'logout')).'">logout</a></li>';
+		}
+		else {
+			echo '
+				<li><a href="'.$this->url(array('controller'=>"login",'action'=>'index')).'">login</a></li>
+				<li><a href="'.$this->url(array('controller'=>"reg",'action'=>'index')).'">'.$this->t->_('REG').'</a></li>';	
+		}
+			?>
+				<li><a href="<?php echo $this->url(array('controller'=>"create",'action'=>'index'));?>"><?php echo $this->t->_('CREATE');?></a></li>
+				<li><a href="<?php echo $this->url(array('controller'=>"edit",'action'=>'index'));?>"><?php echo $this->t->_('EDIT');?></a></li>
+			</ul>
+			<?php 
+			echo $this->layout()->content; ?>
+		</div>
+	</body>
+</html>

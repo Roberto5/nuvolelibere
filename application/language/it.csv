@@ -1,0 +1,22 @@
+Value is required and can't be empty@Il campo deve essere pieno
+The two given tokens do not match@I due campi non coincidono
+Missing captcha fields@Compilare il campo captcha
+DESCRIPTION@Tool online per la creazione di gif animate
+USERNAME@Nome utente :
+ALNUM@Questo campo deve contenere solo lettere e numeri
+PASS_LENG@La password deve contenere 8 caratteri
+ENTER@Entra
+FAILURE@login fallito
+PASS_ERR@password errata
+USER_NOT_FOUND@Username inesistente
+GUEST@Visitatore
+CREATE@Crea
+EDIT@Modifica
+REG@Registrati
+TFRAME@Crea una gif caricando i fotogrammi
+TSCROLL@Crea una gif scorrendo un'immagine
+E_SIZE@Il file è troppo grande
+E_FATAL@Fatal Error, contattare l'admin
+E_TYPE@Il tipo del file non è permesso
+FILE_DISP@Immagini disponibili
+FILE_ON_WORK@Immagini incluse nella gif

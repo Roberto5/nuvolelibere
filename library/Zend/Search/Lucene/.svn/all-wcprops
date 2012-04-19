@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/ageofevolution/!svn/ver/15/library/Zend/Search/Lucene
+END
+TermStreamsPriorityQueue.php
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/ageofevolution/!svn/ver/1/library/Zend/Search/Lucene/TermStreamsPriorityQueue.php
+END
+Exception.php
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/ageofevolution/!svn/ver/1/library/Zend/Search/Lucene/Exception.php
+END
+Document.php
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/ageofevolution/!svn/ver/1/library/Zend/Search/Lucene/Document.php
+END
+Interface.php
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/ageofevolution/!svn/ver/1/library/Zend/Search/Lucene/Interface.php
+END
+Proxy.php
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/ageofevolution/!svn/ver/1/library/Zend/Search/Lucene/Proxy.php
+END
+FSMAction.php
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/ageofevolution/!svn/ver/1/library/Zend/Search/Lucene/FSMAction.php
+END
+Field.php
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/ageofevolution/!svn/ver/1/library/Zend/Search/Lucene/Field.php
+END
+LockManager.php
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/ageofevolution/!svn/ver/1/library/Zend/Search/Lucene/LockManager.php
+END
+FSM.php
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/ageofevolution/!svn/ver/1/library/Zend/Search/Lucene/FSM.php
+END
+PriorityQueue.php
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/ageofevolution/!svn/ver/1/library/Zend/Search/Lucene/PriorityQueue.php
+END
+MultiSearcher.php
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/ageofevolution/!svn/ver/15/library/Zend/Search/Lucene/MultiSearcher.php
+END
