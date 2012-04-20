@@ -1,14 +1,14 @@
 <?php
 
 header ('Content-type:image/gif');
-include('GIFEncoder.class.php');
-$file='firma.jpg';
+include('include/GIFEncoder.class.php');
+$file='00.jpg';
 $size=getimagesize($file);
 $ratio=$size[0]/$size[1];
 $w=$_GET['w'] ? $_GET['w'] : 180;
 $h=$_GET['h'] ? $_GET['h'] : 150;
-if ($_GET['h']) $w=intval($h*$ratio);
-else $h=intval($w/$ratio);
+/*if ($_GET['h']) $w=intval($h*$ratio);
+else $h=intval($w/$ratio);*/
 
 
 $image = imagecreatefromjpeg($file);

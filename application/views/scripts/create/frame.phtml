@@ -12,7 +12,7 @@ function submit() {//<!--
         click: function() { $(this).dialog("close"); }
     }
 ] });return false;}
-	input=$('.form input');
+	input=$('.form input:not([type=checkbox],[type=radio])');
 	post={type:"frame"};
 	
 	framename=$('#framebox h4');
@@ -28,6 +28,8 @@ function submit() {//<!--
 		post[name]=input.eq(key).val();
 	}
 	post.delayTot=$('input[name=delayTot]').attr('checked');
+	post.prop=$('input[name=prop]').attr('checked');
+	post.frameadd=$('input[name=frameadd]:checked').val();
 	$.ajax({
 		url: '<?php echo $this->url(array('controller'=>'make','action'=>'index'));?>',
 		type: 'post',
@@ -69,6 +71,13 @@ $(function(){
 			inputs=$('ul#framebox input');
 			if ($('input[name=delayTot]').attr('checked')) inputs.hide(); else inputs.show();
 			$('ul#files input').hide();
+			file=$('#trash h4').text();
+			$('#trash li').remove();
+			$.ajax({
+				url : '<?php echo $this->url(array('controller'=>'delete','action'=>'index'));?>',
+				type: 'post',
+				data : {'file':file}
+			});
 		}});
 		$('.files').disableSelection();
 	});
@@ -103,9 +112,10 @@ else $this->log->debug("errore");
 	
 	<div>x<input name="x" type="number" min="32" value="150" size="4" maxlength="4" style="width:70px;">px</div>
 	<div>y<input name="y" type="number" min="32" value="150" size="4" maxlength="4" style="width:70px;">px</div>
-	<div><input name="prop" type="checkbox" value="ok"><?php echo $this->t->_('PROP');?></div>
+	<div><input name="prop" type="checkbox" checked="checked" value="true"><?php echo $this->t->_('PROP');?></div>
 	<div><?php echo $this->t->_('DELAY');?><input checked="true" onclick="inputT=$('input[name=delayT]');inputs=$('ul#framebox input');if (this.checked) {inputT.attr('disabled','');inputs.hide();} else {inputT.attr('disabled','true');inputs.show();}" name="delayTot" type="checkbox" value="true"><input name="delayT" type="number" value="100" min="10" size="5" maxlength="5" style="width:70px;"></div>
+	<div><input type="radio" checked="true" name="frameadd" value="2"><?php echo $this->t->_('REPLACE');?><input type="radio" name="frameadd" value="1"><?php echo $this->t->_('COMBINE');?></div>
 	<div><button onclick="submit();"><?php echo $this->t->_('CREATE');?></button></div>
 	
 </div>
-<ul id="trash"  class="files"></ul>
+<ul id="trash"  class="files" title="<?php echo $this->t->_('TRASH_DESC');?>"></ul>

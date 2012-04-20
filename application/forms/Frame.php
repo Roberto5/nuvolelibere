@@ -14,9 +14,10 @@ class Form_Frame extends Zend_Form
         $name=new Zend_Form_Element_MultiCheckbox('name');
         $name->setRegisterInArrayValidator(false);
         $file=new Zend_Validate_File_NotExists();
-        $auth=Zend_Auth::getInstance();
+        /*$auth=Zend_Auth::getInstance();
         if ($auth->hasIdentity()) $user=$auth->getIdentity()->id; else $user=Model_guest::getgid();
-        $path=APPLICATION_PATH.'/../upload/'.$user;
+        $path=APPLICATION_PATH.'/../upload/'.$user;*/
+        $path=Zend_Registry::get('userPath');
         $file->setDirectory($path);
         $name->addValidator($file);
         $this->addElement($name);
@@ -30,6 +31,13 @@ class Form_Frame extends Zend_Form
         $delayT=$this->createElement('text', 'delayT');
         $delayT->addValidator('Int')->addValidator('GreaterThan',null,array('min'=>'10'));
         $this->addElement($delayT);
+        $frameadd=new Zend_Form_Element_Radio('frameadd');
+        $frameadd->setMultiOptions(array('1'=>'combine','2'=>'replace'));
+        $this->addElement($frameadd);
+        $prop=new Zend_Form_Element_Checkbox('prop');
+        $prop->setValue('true');
+        $prop->setUncheckedValue('false');
+        $this->addElement($prop);
     }
 
 

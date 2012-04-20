@@ -8,6 +8,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
     protected function _initAuth ()
     {
         $this->bootstrap("db");
+        $this->bootstrap('autoload');
         $db = $this->getPluginResource('db')->getDbAdapter();
         $adp = new Zend_Auth_Adapter_DbTable($db);
         $adp->setTableName(PREFIX."user")
@@ -18,7 +19,10 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         $storage = new Zend_Auth_Storage_Session();
         $auth = Zend_Auth::getInstance();
         $auth->setStorage($storage);
-        $this->bootstrap("log");
+        if ($auth->hasIdentity()) $user=$auth->getIdentity()->id; else $user=Model_guest::getgid();
+        $path=APPLICATION_PATH.'/../upload/'.$user;
+        Zend_Registry::set('userPath', $path);
+        //$this->bootstrap("log");
         /*$identity=null;
         if ($auth->hasIdentity()) {
             $identity = $auth->getIdentity();

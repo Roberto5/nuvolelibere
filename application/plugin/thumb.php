@@ -31,17 +31,17 @@ class Plugin_thumb {
 			case '.jpeg':
 			case '.jpg':
 				imagejpeg($thumb,$this->path."/thumb".$file);
-			break;
+				break;
 			case '.gif':
 				imagegif($thumb,$this->path."/thumb".$file);
-			break;
+				break;
 			case '.png':
 				imagepng($thumb,$this->path."/thumb".$file);
-			break;
+				break;
 			default:
 				Zend_Registry::get('log')->err('image extension wrong '.$type);
 				return null;
-			break;
+				break;
 		}
 	}
 	/**
@@ -50,32 +50,34 @@ class Plugin_thumb {
 	 * @return resource image
 	 */
 	function get($file) {
-		$size=getimagesize($this->path."/".$file);
-		$ratio=$size[0]/$size[1];
 		$w=$this->w;
 		$h=$this->h;
-		if ($ratio>1) $h=intval($w/$ratio);
-		else $w=intval($h*$ratio);
-		
+		$size=getimagesize($this->path."/".$file);
+		if ($this->prop=='true') {
+			
+			$ratio=$size[0]/$size[1];
+			if ($ratio>1) $h=intval($w/$ratio);
+			else $w=intval($h*$ratio);
+		}
 		$type=strtolower(strrchr($file, '.'));
 		switch ($type) {
 			case '.jpeg':
 			case '.jpg':
 				$image=imagecreatefromjpeg($this->path."/".$file);
-			break;
+				break;
 			case '.gif':
 				$image=imagecreatefromgif($this->path."/".$file);
-			break;
+				break;
 			case '.png':
 				$image=imagecreatefrompng($this->path."/".$file);
-			break;
+				break;
 			default:
 				Zend_Registry::get('log')->err('image extension wrong '.$type);
 				return null;
-			break;
+				break;
 		}
-		$thumb = imagecreatetruecolor($w, $h);
-		imagecopyresized($thumb, $image, 0, 0, 0, 0, $w, $h, $size[0], $size[1]);
+		$thumb = imagecreate($this->w, $this->h);
+		imagecopyresampled($thumb, $image, 0, 0, 0, 0, $w, $h, $size[0], $size[1]);
 		imagedestroy($image);
 		return $thumb;
 	}

@@ -24,7 +24,8 @@ class MakeController extends Zend_Controller_Action
 			if ($form->isValid($_POST)) {
 				imagedestroy($error);
 				$data=$form->getValues();
-				$this->_log->notice(print_r($data,true));
+				$vw=array();
+				$vh=array();
 				$thumb=new Plugin_thumb(array('path'=>$path,'prop'=>$data['prop'],'w'=>$data['x'],'h'=>$data['y']));
 				foreach ($data['name'] as $i=>$fileimg) {
 					$img=$thumb->get($fileimg);
@@ -35,7 +36,7 @@ class MakeController extends Zend_Controller_Action
 					$framed[]=$data['delayTot']=="true" ? $data['delayT'] : $data['delay'][$i]; // Delay in the animation.
 					ob_end_clean();
 				}
-				$gif = new GIFEncoder($frames,$framed,0,2,0,0,0,'bin');
+				$gif = new GIFEncoder($frames,$framed,0,$data['frameadd'],0,0,0,'bin');
 				$fp=fopen($file, "w");
 				fwrite($fp, $gif->GetAnimation());
 				fclose($fp);
