@@ -1,0 +1,20 @@
+<logEntry><timestamp>2012-04-19T23:30:19+02:00</timestamp><message>Page not found</message><priority>5</priority><priorityName>NOTICE</priorityName><info>exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (upload)' in /var/www/gifeditor/library/Zend/Controller/Dispatcher/Standard.php:248
+Stack trace:
+#0 /var/www/gifeditor/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard-&gt;dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /var/www/gifeditor/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front-&gt;dispatch()
+#2 /var/www/gifeditor/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap-&gt;run()
+#3 /var/www/gifeditor/index.php(28): Zend_Application-&gt;run()
+#4 {main}</info></logEntry>
+
+<logEntry><timestamp>2012-04-19T23:30:19+02:00</timestamp><message>Request Parameters</message><priority>5</priority><priorityName>NOTICE</priorityName><controller>upload</controller><action>3342582cddaf354a67b8caa0b947a1b8</action><module>default</module></logEntry>
+
+<logEntry><timestamp>2012-04-19T23:31:59+02:00</timestamp><message>Page not found</message><priority>5</priority><priorityName>NOTICE</priorityName><info>exception 'Zend_Controller_Dispatcher_Exception' with message 'Invalid controller specified (upload)' in /var/www/gifeditor/library/Zend/Controller/Dispatcher/Standard.php:248
+Stack trace:
+#0 /var/www/gifeditor/library/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard-&gt;dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#1 /var/www/gifeditor/library/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front-&gt;dispatch()
+#2 /var/www/gifeditor/library/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap-&gt;run()
+#3 /var/www/gifeditor/index.php(28): Zend_Application-&gt;run()
+#4 {main}</info></logEntry>
+
+<logEntry><timestamp>2012-04-19T23:31:59+02:00</timestamp><message>Request Parameters</message><priority>5</priority><priorityName>NOTICE</priorityName><controller>upload</controller><action>3342582cddaf354a67b8caa0b947a1b8</action><module>default</module></logEntry>
+

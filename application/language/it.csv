@@ -20,3 +20,6 @@ E_FATAL@Fatal Error, contattare l'admin
 E_TYPE@Il tipo del file non è permesso
 FILE_DISP@Immagini disponibili
 FILE_ON_WORK@Immagini incluse nella gif
+PROP@Mantieni proporzioni
+DELAY@Imposta ritardo per tutti i fotogrammi (centesimi di secondo)
+TWOPICS@Seleziona almeno due immagini

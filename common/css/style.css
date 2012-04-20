@@ -118,3 +118,9 @@ ul.files li img{ max-width:150px; max-height:150px; }
 .success{ background:#99f099; border:1px solid #339933; }
 .error{ background:#f0c6c3; border:1px solid #cc6622; }
 .listtitle {font-weight: bolder;}
+.form{
+	margin:0 50px;
+	background: #DEE;
+	float:left;
+	padding:10px;
+}

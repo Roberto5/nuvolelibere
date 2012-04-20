@@ -13,6 +13,13 @@ class Plugin_thumb {
 		}
 		elseif (is_string($config)) $this->path.='/'.$config;
 	}
+	function  set($config) {
+		if (is_array($config)) {
+			foreach ($config as $key => $value) {
+				$this->$key=$value;
+			}
+		}
+	}
 	/**
 	 * create a file thumb
 	 * @param String $file
