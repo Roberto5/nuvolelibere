@@ -135,3 +135,6 @@ ul.files li img{ max-width:150px; max-height:150px; }
 	max-height: 180px;
 	padding:0;
 }
+.dim th {
+	text-align:left;
+}

@@ -54,7 +54,6 @@ class Plugin_thumb {
 		$h=$this->h;
 		$size=getimagesize($this->path."/".$file);
 		if ($this->prop=='true') {
-			
 			$ratio=$size[0]/$size[1];
 			if ($ratio>1) $h=intval($w/$ratio);
 			else $w=intval($h*$ratio);

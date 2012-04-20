@@ -17,7 +17,7 @@ class MakeController extends Zend_Controller_Action
 		$error=imagecreatetruecolor(200, 50);
 		$white=imagecolorallocate($error, 255, 255,255);
 		$red=imagecolorallocate($error, 255, 0, 0);
-		
+		//@todo implementare l'opzione dimensone diversa ad ogni immagine
 		if ($_POST['type']=="frame") {
 			$file=$path.'/prew.gif';
 			$form=new Form_Frame();

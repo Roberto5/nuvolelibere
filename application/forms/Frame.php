@@ -35,9 +35,21 @@ class Form_Frame extends Zend_Form
         $frameadd->setMultiOptions(array('1'=>'combine','2'=>'replace'));
         $this->addElement($frameadd);
         $prop=new Zend_Form_Element_Checkbox('prop');
-        $prop->setValue('true');
+        $prop->setCheckedValue('true');
         $prop->setUncheckedValue('false');
         $this->addElement($prop);
+        $dimT=new Zend_Form_Element_Checkbox('dimT');
+        $dimT->setCheckedValue('true');
+        $dimT->setUncheckedValue('false');
+        $this->addElement($dimT);
+        $dimx=new Zend_Form_Element_MultiCheckbox('dimx');
+        $dimx->setRegisterInArrayValidator(false);
+        $dimx->addValidator('Int')->addValidator('GreaterThan',null,array('min'=>'31'));
+        $this->addElement($dimx);
+        $dimy=new Zend_Form_Element_MultiCheckbox('dimy');
+        $dimy->setRegisterInArrayValidator(false);
+        $dimy->addValidator('Int')->addValidator('GreaterThan',null,array('min'=>'31'));
+        $this->addElement($dimy);
     }
 
 
