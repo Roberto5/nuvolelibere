@@ -78,7 +78,7 @@ a {
 	background:url('../img/cloud200.png') no-repeat;
 }
 #frame {
-	background:url('../img/cloud200.png') no-repeat;
+	
 }
 
 /*upload*/
@@ -123,4 +123,15 @@ ul.files li img{ max-width:150px; max-height:150px; }
 	background: #DEE;
 	float:left;
 	padding:10px;
+}
+#trash{
+	background: url('../img/trash.png') no-repeat;
+	background-color:transparent;
+	position: fixed;
+	right:50px;
+	bottom:50px;
+	height:180px;
+	width: 150px;
+	max-height: 180px;
+	padding:0;
 }
