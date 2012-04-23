@@ -18,6 +18,7 @@ class UploaderController extends Zend_Controller_Action
 		if ($auth->hasIdentity())  $user=$auth->getIdentity()->uid;
 		else $user=Model_guest::getgid();
 		$thumb=new Plugin_thumb($user);
+		$thumb->set(array('frameprop'=>true));
 		$uploaddir = APPLICATION_PATH.'/../upload/';
 		@mkdir($uploaddir.$user);
 		$uploaddir.=$user;

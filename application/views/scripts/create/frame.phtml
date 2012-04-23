@@ -20,97 +20,71 @@ $item_input='
 	<div>
 </div>';
 $this->headScript()->captureStart();?>
-function checkform() {
-return false;
-}
-function submit() {//<!--
+function submitimg() {
+	post={type:'frame'}
 	framedelay=$('#framebox input.delay');
-	if (framedelay.length<2) {$('<div title="Error"><?php echo $this->t->_('TWOPICS');?></div>').dialog({ buttons: [
-    {
-        text: "Ok",
-        click: function() { $(this).dialog("close"); }
-    }
-] });return false;}
-	input=$('.form input:not([type=checkbox],[type=radio])');
-	post={type:"frame"};
-	
+	if (framedelay.length<2) {
+		$('<div title="Error"><?php echo $this->t->_('TWOPICS');?></div>').dialog({ 
+			buttons: [
+			          {
+			        	  text: "Ok",
+			        	  click: function() { $(this).dialog("close"); }
+			          }
+			          ] 
+		});
+		return false;
+	}
 	framename=$('#framebox h4');
 	dimx=$('#framebox .dimx');
 	dimy=$('#framebox .dimy');
 	post.delay=new Array();
 	post.name=new Array();
 	post.dimx=new Array();
-	post.dimy=new Array();
-	for(i=0;i<framedelay.length;i++) {
+	post.dimy=new Array();//<!-- 
+	for(i=0;i<framedelay.length;i++) {// -->
 		post.delay.push(framedelay.eq(i).val());
 		post.name.push(framename.eq(i).text());
 		post.dimx.push(dimx.eq(i).val());
 		post.dimy.push(dimy.eq(i).val());
-	}//-->
-	for(var key in input) {
-		name=input.eq(key).attr('name');
-		post[name]=input.eq(key).val();
 	}
-	post.delayTot=$('input[name=delayTot]').attr('checked');
-	post.prop=$('input[name=prop]').attr('checked');
-	post.dimT=$('input[name=dimT]').attr('checked');
-	post.frameadd=$('input[name=frameadd]:checked').val();
-	$.ajax({
-		url: '<?php echo $this->url(array('controller'=>'make','action'=>'index'));?>',
-		type: 'post',
-		data: post,
-		success:function(data) {
+	submit('form',post,'<?php echo $this->url(array('controller'=>'make','action'=>'index'));?>',function(data) {
 			$('<div><img src="<?php echo $this->baseUrl('/upload/'.$this->user);?>/prew.gif"></div>').dialog({
 				close:function(event,ui){$(this).dialog( "destroy" );}
 			});
-		}
-	});
+		});
 }
+function checkform() {
+return false;
+}
+
 function checkshow() {
 	delay=$('ul#framebox div.delay');
 	dim=$('ul#framebox .dim');
 	if ($('input[name=dimT]').attr('checked')) {dim.hide();} else {dim.show();}
 	if ($('input[name=delayTot]').attr('checked')) delay.hide(); else delay.show();
-	$('ul#files (div.delay,.dim)').hide();
+	$('ul#files div.delay').hide();
+	$('ul#files .dim').hide();
 }
 $(function(){
-		var btnUpload=$('#upload');
-		var status=$('#status');
-		new AjaxUpload(btnUpload, {
-			action: '<?php echo $this->url(array('controller'=>'uploader','action'=>'index'));?>',
-			name: 'uploadfile',
-			onSubmit: function(file, ext){
-				 if (! (ext && /^(jpg|png|jpeg|gif)$/.test(ext))){ 
-                    // extension is not allowed 
-					status.text('Only JPG, PNG or GIF files are allowed');
-					return false;
-				}
-				status.text('Uploading...');
-			},
-			onComplete: function(file, response){
-				//On completion clear the status
-				status.text('');
-				//Add uploaded file to list
-				if(response=="true"){
-					$('<li></li>').appendTo('#files').html('<h4>'+file+'</h4><img src="<?php echo $this->baseUrl('upload/'.$this->user);?>/thumb'+file+'" alt="'+file+'" /><?php echo str_replace("\n", ' ', $item_input);?>').addClass('success');
-				} else{
-					$('<li></li>').appendTo('#files').text(file+'<div>'+response+'</div>').addClass('error');
-					
-				}
-			}
-		});
-		$('.files').sortable({connectWith: "ul",items:"li:not(.listtitle)",stop:function(){
+	initUploader('<?php echo $this->url(array('controller'=>'uploader','action'=>'index'));?>','<?php echo $this->baseUrl('upload/'.$this->user);?>','<?php echo str_replace("\n", ' ', $item_input);?>');
+	$('.files').sortable({
+		connectWith: "ul",
+		items:"li:not(.listtitle)",
+		stop:function(){
 			checkshow();
 			file=$('#trash h4').text();
 			$('#trash li').remove();
-			$.ajax({
-				url : '<?php echo $this->url(array('controller'=>'delete','action'=>'index'));?>',
-				type: 'post',
-				data : {'file':file}
-			});
-		}});
-		$('.files').disableSelection();
+			if (file.length) {
+				$.ajax({
+					url : '<?php echo $this->url(array('controller'=>'delete','action'=>'index'));?>',
+					type: 'post',
+					data : {'file':file}
+				});
+			}
+		}
 	});
+	$('.files').disableSelection();
+});
 <?php $this->headScript()->captureEnd();?>
 
 <div id="upload" ><span>Upload File</span></div><span id="status" ></span>
@@ -144,7 +118,7 @@ else $this->log->debug("errore");
 	<div><input name="prop" type="checkbox" checked="checked" value="true"><?php echo $this->t->_('PROP');?></div>
 	<div><input checked="true" onclick="checkshow();" name="delayTot" type="checkbox" value="true"><?php echo $this->t->_('DELAY');?><input name="delayT" type="number" value="100" min="10" size="5" maxlength="5" style="width:70px;"></div>
 	<div><input type="radio" checked="true" name="frameadd" value="2"><?php echo $this->t->_('REPLACE');?><input type="radio" name="frameadd" value="1"><?php echo $this->t->_('COMBINE');?></div>
-	<div><button onclick="submit();"><?php echo $this->t->_('CREATE');?></button></div>
+	<div><button onclick="submitimg();"><?php echo $this->t->_('CREATE');?></button></div>
 	
 </div>
 <ul id="trash"  class="files" title="<?php echo $this->t->_('TRASH_DESC');?>"></ul>

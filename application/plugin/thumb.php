@@ -4,6 +4,7 @@ class Plugin_thumb {
 	private $h=150;
 	private $prop=true;
 	private $path;
+	private $frameprop=false;
 	function __construct($config) {
 		$this->path=APPLICATION_PATH.'/../upload';
 		if (is_array($config)) {
@@ -50,13 +51,17 @@ class Plugin_thumb {
 	 * @return resource image
 	 */
 	function get($file) {
-		$w=$this->w;
-		$h=$this->h;
+		$wf=$w=$this->w;
+		$hf=$h=$this->h;
 		$size=getimagesize($this->path."/".$file);
 		if ($this->prop=='true') {
 			$ratio=$size[0]/$size[1];
 			if ($ratio>1) $h=intval($w/$ratio);
 			else $w=intval($h*$ratio);
+		}
+		if ($this->frameprop) {
+			$wf=$w;
+			$hf=$h;
 		}
 		$type=strtolower(strrchr($file, '.'));
 		switch ($type) {
@@ -75,7 +80,7 @@ class Plugin_thumb {
 				return null;
 				break;
 		}
-		$thumb = imagecreate($this->w, $this->h);
+		$thumb = imagecreate($wf, $hf);
 		imagecopyresampled($thumb, $image, 0, 0, 0, 0, $w, $h, $size[0], $size[1]);
 		imagedestroy($image);
 		return $thumb;
