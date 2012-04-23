@@ -1,1 +1,0 @@
-body{background:lightblue url('../img/disegno.png') no-repeat center fixed;whidth:500px;font-size:50px;}#log{background:white;color:black;border:2px solid red;}.priority7{background:white;}.priority6{background:blue;}.priority5{background:yellow;}.priority4{background:yellow;}.priority3{background:red;}.priority2{background:red;}.priority1{background:red;}
