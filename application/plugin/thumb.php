@@ -31,7 +31,7 @@ class Plugin_thumb {
 		switch ($type) {
 			case '.jpeg':
 			case '.jpg':
-				imagejpeg($thumb,$this->path."/thumb".$file);
+				imagejpeg($thumb,$this->path."/thumb".$file,90);
 				break;
 			case '.gif':
 				imagegif($thumb,$this->path."/thumb".$file);
@@ -80,9 +80,16 @@ class Plugin_thumb {
 				return null;
 				break;
 		}
-		$thumb = imagecreate($wf, $hf);
+		//$img=new Imagick();
+		//$img->resizeimage($columns, $rows, $filter, $blur)
+		$thumb = imagecreatetruecolor($wf, $hf);
+		$black=imagecolorallocate($thumb, 0, 0, 0);
+		imagecolortransparent($thumb,$black);
 		imagecopyresampled($thumb, $image, 0, 0, 0, 0, $w, $h, $size[0], $size[1]);
+		//imagecopyresized($thumb, $image, 0, 0, 0, 0, $w, $h, $size[0], $size[1]);
 		imagedestroy($image);
+		//imageantialias($thumb, true);
+		
 		return $thumb;
 	}
 }

@@ -18,6 +18,7 @@ set_include_path(implode(PATH_SEPARATOR, array(
 require_once 'Zend/Application.php';
 require_once 'include/costant.php';
 require_once 'include/GIFEncoder.class.php';
+require_once 'include/thumb/phpthumb.class.php';
 
 // Create application, bootstrap, and run
 $application = new Zend_Application(

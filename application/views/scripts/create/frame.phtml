@@ -37,15 +37,21 @@ function submitimg() {
 	framename=$('#framebox h4');
 	dimx=$('#framebox .dimx');
 	dimy=$('#framebox .dimy');
+	posx=$('#framebox .posx');
+	posy=$('#framebox .posy');
 	post.delay=new Array();
 	post.name=new Array();
 	post.dimx=new Array();
-	post.dimy=new Array();//<!-- 
+	post.dimy=new Array();
+	post.posx=new Array();
+	post.posy=new Array();//<!-- 
 	for(i=0;i<framedelay.length;i++) {// -->
 		post.delay.push(framedelay.eq(i).val());
 		post.name.push(framename.eq(i).text());
 		post.dimx.push(dimx.eq(i).val());
 		post.dimy.push(dimy.eq(i).val());
+		post.posx.push(posx.eq(i).val());
+		post.posy.push(posy.eq(i).val());
 	}
 	submit('form',post,'<?php echo $this->url(array('controller'=>'make','action'=>'index'));?>',function(data) {
 			$('<div><img src="<?php echo $this->baseUrl('/upload/'.$this->user);?>/prew.gif"></div>').dialog({

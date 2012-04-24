@@ -3,8 +3,10 @@
  * @param userUrl
  * @param item
  */
-
+var uurl;
+var it;
 function initUploader(action,userUrl,item) {
+	uurl=userUrl;it=item
 	var btnUpload=$('#upload');
 	var status=$('#status');
 	new AjaxUpload(btnUpload, {
@@ -25,7 +27,7 @@ function initUploader(action,userUrl,item) {
 			status.text('');
 			//Add uploaded file to list
 			if(response=="true"){
-				$('<li></li>').appendTo('#files').html('<h4>'+file+'</h4><img src="'+userUrl+'/thumb'+file+'" alt="'+file+'" />'.item).addClass('success');
+				$('<li></li>').appendTo('#files').html('<h4>'+file+'</h4><img src="'+uurl+'/thumb'+file+'" alt="'+file+'" />'+it).addClass('success');
 			} else{
 				$('<li></li>').appendTo('#files').text(file+'<div>'+response+'</div>').addClass('error');
 				
