@@ -18,8 +18,8 @@ class MakeController extends Zend_Controller_Action
 		$white=imagecolorallocate($error, 255, 255,255);
 		$red=imagecolorallocate($error, 255, 0, 0);
 		//@todo implementare l'opzione dimensone diversa ad ogni immagine
-		if ($_POST['type']=="frame") {
-			$file=$path.'/prew.gif';
+		if ($_POST['type']=="frame") {// creo i frame
+			
 			$form=new Form_Frame();
 			if ($form->isValid($_POST)) {
 				imagedestroy($error);
@@ -29,36 +29,30 @@ class MakeController extends Zend_Controller_Action
 				//$thumb=new Plugin_thumb(array('path'=>$path,'prop'=>$data['prop'],'w'=>$data['x'],'h'=>$data['y']));
 				include_once 'include/thumb/phpthumb.class.php';
 				$thumb=new phpthumb();
-				
 				include_once 'include/thumb/phpThumb.config.php';
 				$PHPTHUMB_CONFIG['cache_directory'] = $path;
 				foreach ($data['name'] as $i=>$fileimg) {
 					$thumb->iar=$data['prop']!="true";
 					$thumb->w=$data['x'];
 					$thumb->h=$data['y'];
-					//$thumb->f='gif';
 					$thumb->src=$path.'/'.$fileimg;
 					if ($data['dimT']!="true") {
 						$thumb->far='x'.$data['posx'][$i].'y'.$data['posy'][$i];
 						$thumb->w=$data['dimx'][$i];
 						$thumb->h=$data['dimy'][$i];
 					}
-					else $thumb->far=true;
+					else $thumb->far='T';
+					$thumb->f='gif';
 					$thumb->GenerateThumbnail();
-					
-					//$img=$thumb->get($fileimg);
-					ob_start();
-					imagegif($thumb->gdimg_output);
-					//imagedestroy($img);
-					$frames[]=ob_get_contents();
-					$framed[]=$data['delayTot']=="true" ? $data['delayT'] : $data['delay'][$i]; // Delay in the animation.
-					ob_end_clean();
+					$delay=$data['delayTot']=="true" ? $data['delayT'] : $data['delay'][$i];
+					$thumb->RenderToFile($path."/temp/($delay)file$i.gif");
+					/*/$img=$thumb->get($fileimg);
+					 ob_start();
+					 imagegif($thumb->gdimg_output);
+					 //imagedestroy($img);
+					 ob_end_clean();*/
 					$thumb->resetObject();
 				}
-				$gif = new GIFEncoder($frames,$framed,0,$data['frameadd'],0,0,0,'bin');
-				$fp=fopen($file, "w");
-				fwrite($fp, $gif->GetAnimation());
-				fclose($fp);
 				$this->view->output='true';
 
 			}
@@ -70,12 +64,33 @@ class MakeController extends Zend_Controller_Action
 			}
 			/*
 			 	
-				
-				
+
+
 			*/
 		}
-		else {
+		elseif ($_POST['type']=='scrool') {
 
+		}
+		else {//processing
+			$data['frameadd']=(int)$_POST['frameadd'];
+			$path.='/temp';
+			if ($dp = @opendir($path)) {
+				while($file = readdir($dp)) {
+					if (($file!=".")&&($file!="..")&&is_file($path.'/'.$file)&&($file!="prew.gif")) {
+						$frames[]=$path.'/'.$file;
+						preg_match("/\(\d+\)/", $file,$delay);
+						$delay=str_replace("(", "", $delay[0]);
+						$delay=str_replace(")", "", $delay);
+						$framed[]=intval($delay); // Delay in the animation.
+					}
+					
+				}
+				$gif = new GIFEncoder($frames,$framed,0,$data['frameadd'],0,0,0,'url');
+				$fp=fopen($path.'/prew.gif', "w");
+				fwrite($fp, $gif->GetAnimation());
+				fclose($fp);
+			}
+			else $this->_log->notice("cartella ".$path.'inesistente');
 		}
 
 	}

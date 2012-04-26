@@ -54,10 +54,23 @@ function submitimg() {
 		post.posy.push(posy.eq(i).val());
 	}
 	submit('form',post,'<?php echo $this->url(array('controller'=>'make','action'=>'index'));?>',function(data) {
-			$('<div><img src="<?php echo $this->baseUrl('/upload/'.$this->user);?>/prew.gif"></div>').dialog({
-				close:function(event,ui){$(this).dialog( "destroy" );}
+		if (data) {
+			post.type='processing';
+			submit('form',post,'<?php echo $this->url(array('controller'=>'make','action'=>'index'));?>',function (data){
+				$('<div><img src="<?php echo $this->baseUrl('/upload/'.$this->user);?>/temp/prew.gif"></div>').dialog({
+					close:function(event,ui){$(this).dialog( "destroy" );}
+				});
 			});
+		}
+		else $('<div title="Error">fatal error</div>').dialog({ 
+			buttons: [
+			          {
+			        	  text: "Ok",
+			        	  click: function() { $(this).dialog("close"); }
+			          }
+			          ] 
 		});
+	});
 }
 function checkform() {
 return false;
@@ -99,7 +112,7 @@ $(function(){
 	<li class="listtitle"><?php echo $this->t->_('FILE_DISP');?></li>
 <?php 
 
-if ($dp = opendir(APPLICATION_PATH.'/../upload/'.$this->user)) 
+if ($dp = @opendir(APPLICATION_PATH.'/../upload/'.$this->user)) 
 {
 	while($file = readdir($dp)) {
 		if (($file!=".")&&($file!="..")&&is_file(APPLICATION_PATH.'/../upload/'.$this->user.'/'.$file)&&!strstr($file, "thumb")&&($file!="prew.gif"))
@@ -110,7 +123,7 @@ if ($dp = opendir(APPLICATION_PATH.'/../upload/'.$this->user))
 		'</li>';
 	}
 }
-else $this->log->debug("errore");
+else $this->log->notice("cartella ".APPLICATION_PATH.'/../upload/'.$this->user.'inesistente');
 ?>
 </ul>
 <ul class="files" id="framebox">

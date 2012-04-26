@@ -32,7 +32,7 @@ class Form_Frame extends Zend_Form
         $delayT->addValidator('Int')->addValidator('GreaterThan',null,array('min'=>'10'));
         $this->addElement($delayT);
         $frameadd=new Zend_Form_Element_Radio('frameadd');
-        $frameadd->setMultiOptions(array('1'=>'combine','2'=>'replace'));
+        $frameadd->setMultiOptions(array('1'=>'combine','2'=>'replace','0'=>'0','3'=>'3'));
         $this->addElement($frameadd);
         $prop=new Zend_Form_Element_Checkbox('prop');
         $prop->setCheckedValue('true');

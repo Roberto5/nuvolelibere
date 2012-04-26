@@ -24,6 +24,7 @@ class UploaderController extends Zend_Controller_Action
 		$thumb->set(array('frameprop'=>true));*/
 		$uploaddir = APPLICATION_PATH.'/../upload/';
 		@mkdir($uploaddir.$user);
+		@mkdir($uploaddir.$user.'/temp');
 		$uploaddir.=$user;
 		$PHPTHUMB_CONFIG['cache_directory'] =$uploaddir;
 		
