@@ -72,5 +72,15 @@ $ua=new Zend_Http_UserAgent();
 			<?php 
 			echo $this->layout()->content; ?>
 		</div>
+		<div id="footer"><?php 
+		if ($auth->hasIdentity()) {
+			$user=$auth->getIdentity()->username;
+			$role = Model_role::getRole();
+		}
+        else {
+        	$user=Model_guest::getgid();
+        	$role = 'guest';
+        }
+		echo "$role $user";?></div>
 	</body>
 </html>
