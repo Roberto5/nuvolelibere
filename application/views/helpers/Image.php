@@ -28,7 +28,7 @@ class Zend_View_Helper_image extends Zend_View_Helper_Abstract
      * @param array $attr attributi nome=>valore
      * @return Zend_View_Helper_image
      */
-    public function image($src=false, $alt=false, $title = "", $width = 16, $heigth = 16,$attr=false)
+    public function image($src=false, $alt=false, $title = "", $width=false, $heigth=false,$attr=false)
     {
     	if (!$this->baseUrl) {
     		$config=Zend_Registry::get("config");
@@ -44,6 +44,8 @@ class Zend_View_Helper_image extends Zend_View_Helper_Abstract
     			$a.=$key.'="'.$value.'" ';
     		}
     	}
+    	$width=$width ? 'width="' . $width . '"' : '';
+    	$heigth=$heigth ? 'height="' . $heigth . '"':'';
     	if ($src&&$alt) 
       		return '<img src="'.$this->baseUrl . $src . '" alt="[' . $alt . ']" '.($title? 'title="' . $title .
          '"' : '').' width="' . $width . '" height="' . $heigth . '" '.$a.' />';

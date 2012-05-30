@@ -119,7 +119,7 @@ if ($dp = @opendir(APPLICATION_PATH.'/../upload/'.$this->user))
 		echo '
 	<li class="success">
 		<h4>'.$file.'</h4>
-		'.$this->image('/upload/'.$this->user.'/thumb'.$file,$file,$file," "," ").$item_input.
+		'.$this->image('/upload/'.$this->user.'/thumb'.$file,$file,$file).$item_input.
 		'</li>';
 	}
 }
