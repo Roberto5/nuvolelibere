@@ -19,13 +19,23 @@ $ua=new Zend_Http_UserAgent();
 	}
 	echo $this->headLink()->prependStylesheet($this->baseUrl() . '/common/css/css.php'.($mobile? '?l=m' : ''));
 	echo $this->headScript()->prependFile($this->baseUrl('/common/js/js.php'));
+	?>
+	  
+	<script type="text/javascript">
+	<!--
+		$(function(){
+			$('.beta').attr('title','<?php echo $this->t->_('NOTIMPL');?>');
+		});
+	//-->
+	</script>
+	<?php 
 	$this->headTitle()->setSeparator(' - ');
-	$this->headTitle('Gifeditor');
+	$this->headTitle('Nuvole libere');
 	echo $this->headTitle();
 	?>
 	</head>
 	<body>
-		<div id="header"></div>
+		
 		<div id="locale">language 
 			<form action="<?php echo $this->url();?>">
 				<select onchange="submit();" name="locale">
@@ -38,7 +48,8 @@ $ua=new Zend_Http_UserAgent();
 				</select>
 			</form>
 		</div>
-		<div class="container">
+		<div id="container">
+			<div id="header"></div>
 	<?php 
 	if ($this->logger) {
 		$text="<ol>";
@@ -58,21 +69,23 @@ $ua=new Zend_Http_UserAgent();
 		//user
 		if ($auth->hasIdentity()) {
 			echo '
-				<li><a href="'.$this->url(array('controller'=>"login",'action'=>'logout')).'">logout</a></li>';
+				<li><a href="'.$this->url(array('controller'=>"login",'action'=>'logout')).'">logout</a></li>
+				<li><a class="beta" href="'.$this->url(array('controller'=>"profile",'action'=>'index')).'">'.$this->t->_('PROFILE').'</a></li>';
 		}
 		else {
 			echo '
 				<li><a href="'.$this->url(array('controller'=>"login",'action'=>'index')).'">login</a></li>
-				<li><a href="'.$this->url(array('controller'=>"reg",'action'=>'index')).'">'.$this->t->_('REG').'</a></li>';	
+				<li><a class="beta" href="'.$this->url(array('controller'=>"reg",'action'=>'index')).'">'.$this->t->_('REG').'</a></li>';	
 		}
-			?>
+			/*
 				<li><a href="<?php echo $this->url(array('controller'=>"create",'action'=>'index'));?>"><?php echo $this->t->_('CREATE');?></a></li>
 				<li><a href="<?php echo $this->url(array('controller'=>"edit",'action'=>'index'));?>"><?php echo $this->t->_('EDIT');?></a></li>
-			</ul>
-			<?php 
+			*/
+			?></ul>
+			<div id="content"><?php 
 			echo $this->layout()->content; ?>
-		</div>
-		<div id="footer"><?php 
+			</div>
+			<div id="footer"><?php 
 		if ($auth->hasIdentity()) {
 			$user=$auth->getIdentity()->username;
 			$role = Model_role::getRole();
@@ -81,6 +94,9 @@ $ua=new Zend_Http_UserAgent();
         	$user=Model_guest::getgid();
         	$role = 'guest';
         }
-		echo "$role $user";?></div>
+			echo "$role $user";?>
+			</div>
+		</div>
+		
 	</body>
 </html>

@@ -34,13 +34,23 @@ public function indexAction ()
                 $result = $adapter->authenticate();
                 if ($result->isValid()) {
                     $user = $adapter->getResultRowObject(array('uid', 
-                    'username'));
-                    $auth->getStorage()->write(
-                    $user);
-                    $this->view->type = 1;
-                    $this->view->text = "login eseguito con successo";
+                    'username','active'));
+                    if ($user->active) {
+                    	$auth->getStorage()->write($user);
+                    	$this->view->type = 1;
+                    	$this->view->link= $this->view->url(array('controller'=>'index','action'=>'index'));
+                    	$this->view->text = $this->_t->_("LOGIN");;
+                    }
+                    else {
+                    	$this->view->type = 2;
+                    	$model=new Model_user($user->uid);
+                    	$code=$model->data['code'];
+                    	$this->view->link= $this->view->url(array('controller'=>'reg','action'=>'resend','code'=>$code));
+                    	$this->view->text = $this->_t->_("NOT_ACTIVE");
+                    }
                 } else {
                 	$this->view->type = 2;
+                	$this->view->link= $this->view->url(array('controller'=>'login','action'=>'index'));
                     switch ($result->getCode()) {
                         case Zend_Auth_Result::FAILURE:
                             $this->view->text = $this->_t->_("FAILURE");

@@ -1,0 +1,4 @@
+User {USER}, 
+the registration at the site {SITE} has been completed. 
+
+You activate your account by clicking on this link: {LINK}

@@ -26,26 +26,26 @@ class MakeController extends Zend_Controller_Action
 				$data=$form->getValues();
 				$vw=array();
 				$vh=array();
-				//$thumb=new Plugin_thumb(array('path'=>$path,'prop'=>$data['prop'],'w'=>$data['x'],'h'=>$data['y']));
-				include_once 'include/thumb/phpthumb.class.php';
-				$thumb=new phpthumb();
-				include_once 'include/thumb/phpThumb.config.php';
-				$PHPTHUMB_CONFIG['cache_directory'] = $path;
+				$thumb=new Plugin_thumb(array('path'=>$path,'prop'=>$data['prop'],'w'=>$data['x'],'h'=>$data['y']));
+				//include_once 'include/thumb/phpthumb.class.php';
+				//$thumb=new phpthumb();
+				//include_once 'include/thumb/phpThumb.config.php';
+				//$PHPTHUMB_CONFIG['cache_directory'] = $path;
+				//$thumb->set($config);
 				foreach ($data['name'] as $i=>$fileimg) {
-					$thumb->iar=$data['prop']!="true";
-					$thumb->w=$data['x'];
-					$thumb->h=$data['y'];
+									
+					
 					$thumb->src=$path.'/'.$fileimg;
 					if ($data['dimT']!="true") {
-						$thumb->far='x'.$data['posx'][$i].'y'.$data['posy'][$i];
-						$thumb->w=$data['dimx'][$i];
-						$thumb->h=$data['dimy'][$i];
+						//$thumb->far='x'.$data['posx'][$i].'y'.$data['posy'][$i];
+						//$thumb->w=$data['dimx'][$i];
+						//$thumb->h=$data['dimy'][$i];
 					}
-					else $thumb->far='T';
-					$thumb->f='gif';
-					$thumb->GenerateThumbnail();
+					//else $thumb->far='T';
+					//$thumb->f='gif';
+					//$thumb->GenerateThumbnail();
 					$delay=$data['delayTot']=="true" ? $data['delayT'] : $data['delay'][$i];
-					$thumb->RenderToFile($path."/temp/($delay)file$i.gif");
+					$thumb->create($path."/temp/($delay)file$i.gif");
 					/*/$img=$thumb->get($fileimg);
 					 ob_start();
 					 imagegif($thumb->gdimg_output);

@@ -1,5 +1,5 @@
 <?php
-class Application_Form_Register extends Zend_Form
+class Form_Register extends Zend_Form
 {
     public function init ()
     {
@@ -7,6 +7,8 @@ class Application_Form_Register extends Zend_Form
     	 * traduttore
     	 * @var Zend_Translate
     	 */
+    	$conf=Zend_Registry::get("config");
+    	$require=$conf->email->require || $conf->email->active;
         $t = Zend_Registry::get("translate");
         $this->setAction('./reg/')
             ->setMethod("post")
@@ -20,7 +22,7 @@ class Application_Form_Register extends Zend_Form
             ->addValidator("alnum")
             ->addValidator("StringLength", null, array('max' => 30, 'min' => 4))
             ->addValidator("Db_NoRecordExists", null, 
-        array('table' => USERS_TABLE, 'field' => 'username'));
+        array('table' => PREFIX.'user', 'field' => 'username'));
         
         $attribs = array('id' => 'user', 'onchange' => 'controlRegister()', 
         'size' => '20', 'maxlength' => '30');
@@ -29,7 +31,7 @@ class Application_Form_Register extends Zend_Form
         'Il nome utente deve contenere solo lettere e numeri');
         $user->getValidator("StringLength")->setMessage("il nome utente deve avere una lunghezza tra i 4 ai 30 caratteri");
         $user->getValidator("Db_NoRecordExists", null, 
-        array('table' => USERS_TABLE, 'field' => 'username'))->setMessage("nome utente in uso");
+        array('table' => PREFIX.'user', 'field' => 'username'))->setMessage("nome utente in uso");
         $this->addElement($user);
         //password
         $pass = $this->createElement("password", "password");
@@ -58,20 +60,20 @@ class Application_Form_Register extends Zend_Form
         $this->addElement($pass2);
         //email
         $mail = $this->createElement("text", "email");
-        $mail->setLabel($t->_("Email"));
-        $mail->setRequired(true)
+        $mail->setLabel('Email');
+        $mail->setRequired($require)
             ->addFilter("StringTrim")
             ->addValidator("EmailAddress")
             ->addValidator("Db_NoRecordExists", null, 
-        array('table' => USERS_TABLE, 'field' => 'user_mail'));
+        array('table' => PREFIX.'user', 'field' => 'email'));
         $mail->getValidator("EmailAddress")->setMessage("Email non valida");
         $mail->getValidator("Db_NoRecordExists")->setMessage("Email in uso");
         $attribs = array('id' => 'email', 'onchange' => 'controlRegister()', 
         'size' => '16');
         $mail->setAttribs($attribs);
         $this->addElement($mail);
-        $conf=Zend_Registry::get("config");
-        if ((!$conf->local)||($_GET['test'])) {
+        
+        if ((!$conf->nl->local)||($_GET['test'])) {
         	$this->addElement('captcha', 'captcha', 
         array('label' => 'controllo anti-bot', 'required' => true, 
         'captcha' => array(

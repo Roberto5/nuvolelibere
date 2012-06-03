@@ -7,6 +7,7 @@ ALNUM@Questo campo deve contenere solo lettere e numeri
 PASS_LENG@La password deve contenere 8 caratteri
 ENTER@Entra
 FAILURE@login fallito
+LOGIN@Login eseguito con successo
 PASS_ERR@password errata
 USER_NOT_FOUND@Username inesistente
 GUEST@Visitatore
@@ -29,3 +30,13 @@ COMBINE@Combina
 DIMTOT@Imposta ogni immagine a queste dimensioni
 POSITION@Posizione
 DIMENTION@Dimensione
+PROFILE@Profilo
+NOTIMPL@Non implementato
+LOGOUT@Logout eseguito con successo
+ERR_ACTIV@Codice di attivazione errato
+SUC_ACTIV@Account attivato con successo
+NOT_ACTIVE@Account non attivo
+SEND@Invia
+RESEND@Il tuo account non è attivo, se non hai ricevuto l'email puoi rispedira reinserendo l'indirizzo giusto
+REG_SUCC@Registrazione avvenuta con successo
+CTRL_MAIL@Controlla la tua email.

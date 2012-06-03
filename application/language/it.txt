@@ -1,0 +1,5 @@
+Utente {USER},
+la registrazione al sito {SITE} è stata completata.
+
+Puoi attivare il tuo account cliccando su questo link:
+{LINK}
