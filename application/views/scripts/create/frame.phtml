@@ -131,12 +131,12 @@ else $this->log->notice("cartella ".APPLICATION_PATH.'/../upload/'.$this->user.'
 </ul>
 
 <div class="form">
-	<div><input onclick="checkshow();" type="checkbox" checked="true" name="dimT" value="true" ><?php echo $this->t->_('DIMTOT');;?></div>
+	<div><input onclick="checkshow();" type="checkbox" checked="checked" name="dimT" value="true" ><?php echo $this->t->_('DIMTOT');;?></div>
 	<div>x <input name="x" type="number" min="32" value="150" size="4" maxlength="4" style="width:70px;">px</div>
 	<div>y <input name="y" type="number" min="32" value="150" size="4" maxlength="4" style="width:70px;">px</div>
 	<div><input name="prop" type="checkbox" checked="checked" value="true"><?php echo $this->t->_('PROP');?></div>
-	<div><input checked="true" onclick="checkshow();" name="delayTot" type="checkbox" value="true"><?php echo $this->t->_('DELAY');?><input name="delayT" type="number" value="100" min="10" size="5" maxlength="5" style="width:70px;"></div>
-	<div><input type="radio" checked="true" name="frameadd" value="2"><?php echo $this->t->_('REPLACE');?><input type="radio" name="frameadd" value="1"><?php echo $this->t->_('COMBINE');?></div>
+	<div><input checked="checked" onclick="checkshow();" name="delayTot" type="checkbox" value="true"><?php echo $this->t->_('DELAY');?><input name="delayT" type="number" value="100" min="10" size="5" maxlength="5" style="width:70px;"></div>
+	<div><input type="radio" checked="checked" name="frameadd" value="2"><?php echo $this->t->_('REPLACE');?><input type="radio" name="frameadd" value="1"><?php echo $this->t->_('COMBINE');?></div>
 	<div><button onclick="submitimg();"><?php echo $this->t->_('CREATE');?></button></div>
 	
 </div>
