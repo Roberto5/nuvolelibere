@@ -1,4 +1,21 @@
-<br /><br />
-<div id="view-content">
-	<p>View script for controller <b>Reg</b> and script/action name <b>index</b></p>
-</div>
+<?php
+/*
+$this->headScript()->captureStart();
+echo '$(document).ready(function() {
+	
+   //$("#recaptcha_switch_audio_btn").remove();
+   Recaptcha.switch_type=function(){ alert("audio disabilitato!");};
+	
+}); ';
+*/
+$this->headScript()->captureEnd();
+
+if ($this->type == 1) {
+    //$link, $text, $type=1, $sec=5
+    $link = $this->url(
+    array('controller' => 'index', 'action' => 'index'));
+    echo $this->template()->Alerts($this->text,$link,1,($_GET['test']? null : 5));
+} 
+else
+    echo $this->form;
+?>

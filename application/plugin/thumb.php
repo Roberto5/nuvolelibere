@@ -68,28 +68,24 @@ class Plugin_thumb {
 			case '.jpeg':
 			case '.jpg':
 				$image=imagecreatefromjpeg($this->path."/".$file);
+				$thumb = imagecreatetruecolor($wf, $hf);
 				break;
 			case '.gif':
 				$image=imagecreatefromgif($this->path."/".$file);
+				$thumb = imagecreate($wf, $hf);
 				break;
 			case '.png':
 				$image=imagecreatefrompng($this->path."/".$file);
+				$thumb = imagecreate($wf, $hf);
 				break;
 			default:
 				Zend_Registry::get('log')->err('image extension wrong '.$type);
 				return null;
 				break;
 		}
-		//$img=new Imagick();
-		//$img->resizeimage($columns, $rows, $filter, $blur)
-		$thumb = imagecreatetruecolor($wf, $hf);
-		$black=imagecolorallocate($thumb, 0, 0, 0);
-		imagecolortransparent($thumb,$black);
 		imagecopyresampled($thumb, $image, 0, 0, 0, 0, $w, $h, $size[0], $size[1]);
 		//imagecopyresized($thumb, $image, 0, 0, 0, 0, $w, $h, $size[0], $size[1]);
 		imagedestroy($image);
-		//imageantialias($thumb, true);
-		
 		return $thumb;
 	}
 }

@@ -19,6 +19,7 @@ require_once 'Zend/Application.php';
 require_once 'include/costant.php';
 require_once 'include/GIFEncoder.class.php';
 require_once 'include/thumb/phpthumb.class.php';
+require_once 'include/function.php';
 
 // Create application, bootstrap, and run
 $application = new Zend_Application(

@@ -1,10 +1,9 @@
 <?php 
 switch ($this->type) {
 	case 1:
-	echo $this->text;
-	break;
 	case 2:
-	echo $this->text;
+	echo $this->template()->Alerts($this->text,$this->link,$this->type,5);
+	break;
 	default:
 		echo $this->form;
 	break;

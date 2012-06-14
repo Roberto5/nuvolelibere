@@ -161,7 +161,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
     {
         //error_reporting(E_ERROR | E_WARNING | E_PARSE);
         $config = new Zend_Config($this->getOptions());
-        Zend_Registry::set('config', $config->gifeditor);
+        Zend_Registry::set('config', $config);
         //carico le costanti del server
         return $config;
     }
