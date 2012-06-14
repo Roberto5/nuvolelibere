@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 3.4.5deb1
+-- version 3.4.10.1deb1
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generato il: Apr 23, 2012 alle 15:28
--- Versione del server: 5.1.61
--- Versione PHP: 5.3.6-13ubuntu3.6
+-- Generato il: Giu 14, 2012 alle 17:43
+-- Versione del server: 5.5.24
+-- Versione PHP: 5.3.10-1ubuntu3.1
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -45,9 +45,12 @@ CREATE TABLE IF NOT EXISTS `ge_user` (
   `username` varchar(30) NOT NULL,
   `password` varchar(32) NOT NULL,
   `email` varchar(40) NOT NULL,
+  `active` int(1) NOT NULL,
+  `code` varchar(32) NOT NULL,
+  `code_time` int(10) NOT NULL,
   PRIMARY KEY (`uid`),
   UNIQUE KEY `username` (`username`,`email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Limiti per le tabelle scaricate

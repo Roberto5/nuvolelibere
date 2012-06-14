@@ -53,7 +53,7 @@ class RegController extends Zend_Controller_Action
 		$code=$code? md5($code):null;
 		$user=new Model_user(0,$code);
 		$this->_log->debug(print_r($user->data,true));
-		if ($user->data) {
+		if ($user->data && ($user->data->code_time+86400)<time()) {
 			$auth=Zend_Auth::getInstance();
 			$data=new stdClass();
 			$data->uid=$user->data->uid;

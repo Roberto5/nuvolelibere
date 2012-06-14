@@ -41,6 +41,7 @@ class Model_user extends Zend_Db_Table_Abstract {
 	static function register ($data)
 	{
 		if ($data) {
+			$data['code_time']=time();
 			self::getDefaultAdapter()->insert(PREFIX.'user',$data);
 			return true;
 		} else {
@@ -55,6 +56,9 @@ class Model_user extends Zend_Db_Table_Abstract {
 	function updateU ($data)
 	{
 		if ($data) {
+			if (isset($data['code'])) {
+				$data['code_time']=time();
+			}
 			return $this->update($data,"`uid`='".$this->data['uid']."'");
 		}
 		return false;
