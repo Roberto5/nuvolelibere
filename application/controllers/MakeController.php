@@ -23,6 +23,14 @@ class MakeController extends Zend_Controller_Action
 			$form=new Form_Frame();
 			if ($form->isValid($_POST)) {
 				imagedestroy($error);
+				//rimuovere le vecchie immagini!!
+				if ($dp = @opendir($path.'/temp')) {
+					while($file = readdir($dp)) {
+						if (($file!=".")&&($file!="..")&&is_file($path.'/temp/'.$file)) {
+							unlink($path.'/temp/'.$file);
+						}
+					}
+				}
 				$data=$form->getValues();
 				$vw=array();
 				$vh=array();
@@ -77,7 +85,9 @@ class MakeController extends Zend_Controller_Action
 			if ($dp = @opendir($path)) {
 				while($file = readdir($dp)) {
 					if (($file!=".")&&($file!="..")&&is_file($path.'/'.$file)&&($file!="prew.gif")) {
-						$frames[]=$path.'/'.$file;
+						preg_match("/file\d+/", $file,$index);
+						$index=str_replace("file","",$index[0]);
+						$frames[$index]=$path.'/'.$file;
 						preg_match("/\(\d+\)/", $file,$delay);
 						$delay=str_replace("(", "", $delay[0]);
 						$delay=str_replace(")", "", $delay);

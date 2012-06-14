@@ -17,10 +17,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `gifedit`
+-- Database: `nuvolelibere`
 --
-CREATE DATABASE `gifedit` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `gifedit`;
+CREATE DATABASE `nuvolelibere` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `nuvolelibere`;
 
 -- --------------------------------------------------------
 
@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `ge_user` (
   `email` varchar(40) NOT NULL,
   PRIMARY KEY (`uid`),
   UNIQUE KEY `username` (`username`,`email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
 -- Limiti per le tabelle scaricate

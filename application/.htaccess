@@ -1,0 +1,5 @@
+######## proteggo i file #############
+<Files *>
+ORDER deny,allow
+deny FROM ALL
+</Files>

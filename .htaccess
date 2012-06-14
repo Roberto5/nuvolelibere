@@ -6,6 +6,8 @@ RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^.*$ - [NC,L]
 RewriteRule ^.*$ index.php [NC,L]
 
+Options -Indexes
+
 ######## Blocchiamo i files di log #############
 <Files *_log.txt>
 ORDER allow,deny
