@@ -17,11 +17,6 @@ class Zend_View_Helper_Template extends Zend_View_Helper_Abstract
 	 */
 	public $view;
 	public $baseUrl;
-	/**
-	 *
-	 * @var Model_civilta
-	 */
-	private $civ;
 	function __construct ()
 	{
 		$this->view = new Zend_View();
@@ -109,6 +104,9 @@ class Zend_View_Helper_Template extends Zend_View_Helper_Abstract
 		return $html;
 	}
 
+	function button($url,$text='',$class='') {
+		return '<button class="button '.$class.'" title="" onclick="location.href=\''.$url.'\';">'.$text.'</button>';
+	}
 	/**
 	 * Sets the view field
 	 * @param $view Zend_View_Interface

@@ -98,6 +98,21 @@ a {
 	width:200px;
 	height:150px;	
 }
+button.button{
+	background:url('../img/cloud200.png') no-repeat;
+	text-align:center;
+	cursor:pointer;
+	border:0;
+}
+.cloud200 {
+	background:url('../img/cloud200.png') no-repeat;
+}
+.cloud100 {
+	background:url('../img/cloud100.png') no-repeat;
+}
+.cloud500 {
+	background:url('../img/cloud.png') no-repeat;
+}
 #scroll {
 	background:url('../img/cloud200.png') no-repeat;
 }

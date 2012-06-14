@@ -11,8 +11,8 @@ LOGIN@Login eseguito con successo
 PASS_ERR@password errata
 USER_NOT_FOUND@Username inesistente
 GUEST@Visitatore
-CREATE@Crea
-EDIT@Modifica
+CREATE@Crea una gif
+EDIT@Modifica una gif
 REG@Registrati
 TFRAME@Crea una gif caricando i fotogrammi
 TSCROLL@Crea una gif scorrendo un'immagine

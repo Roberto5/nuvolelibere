@@ -11,7 +11,8 @@ class IndexController extends Zend_Controller_Action
     public function indexAction()
     {
         $auth=Zend_Auth::getInstance();
-        if ($auth->hasIdentity()) $this->view->user=$auth->getIdentity()->username;
+        $this->view->hasId=$auth->hasIdentity();
+        if ($this->view->hasId) $this->view->user=$auth->getIdentity()->username;
         else $this->view->user=Model_guest::getgid();
     }
 
