@@ -1,6 +1,4 @@
-<div id="frame"><a href="<?php echo $this->url(array('controller'=>'create','action'=>'frame'));?>">
-	<img class="button" title="<?php echo $this->t->_('TFRAME'); ?>" alt="frame" src="<?php echo $this->baseUrl('/common/img/frame.gif');?>">
-</a></div>
-<div id="scroll"><a href="<?php echo $this->url(array('controller'=>'create','action'=>'scroll'));?>">
-	<img class="button" title="<?php echo $this->t->_('TSCROLL'); ?>" alt="scroll" src="<?php echo $this->baseUrl('/common/img/scroll.gif');?>">
-</a></div>
+<?php 
+echo $this->template()->button($this->url(array('controller'=>'create','action'=>'frame')),'','frame',$this->t->_('TFRAME'));
+echo $this->template()->button($this->url(array('controller'=>'create','action'=>'scroll')),'','scroll',$this->t->_('TSCROLL'));
+?>

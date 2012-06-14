@@ -1,0 +1,117 @@
+<?php 
+$this->headScript()->captureStart();?>
+function submitimg() {
+	/*post={type:'frame'}
+	framedelay=$('#framebox input.delay');
+	if (framedelay.length<2) {
+		$('<div title="Error"><?php echo $this->t->_('TWOPICS');?></div>').dialog({ 
+			buttons: [
+			          {
+			        	  text: "Ok",
+			        	  click: function() { $(this).dialog("close"); }
+			          }
+			          ] 
+		});
+		return false;
+	}
+	framename=$('#framebox h4');
+	dimx=$('#framebox .dimx');
+	dimy=$('#framebox .dimy');
+	posx=$('#framebox .posx');
+	posy=$('#framebox .posy');
+	post.delay=new Array();
+	post.name=new Array();
+	post.dimx=new Array();
+	post.dimy=new Array();
+	post.posx=new Array();
+	post.posy=new Array();//<!-- 
+	for(i=0;i<framedelay.length;i++) {// -->
+		post.delay.push(framedelay.eq(i).val());
+		post.name.push(framename.eq(i).text());
+		post.dimx.push(dimx.eq(i).val());
+		post.dimy.push(dimy.eq(i).val());
+		post.posx.push(posx.eq(i).val());
+		post.posy.push(posy.eq(i).val());
+	}
+	submit('form',post,'<?php echo $this->url(array('controller'=>'make','action'=>'index'));?>',function(data) {
+		if (data) {
+			post.type='processing';
+			submit('form',post,'<?php echo $this->url(array('controller'=>'make','action'=>'index'));?>',function (data){
+				$('<div><img src="<?php echo $this->baseUrl('/upload/'.$this->user);?>/temp/prew.gif"></div>').dialog({
+					close:function(event,ui){$(this).dialog( "destroy" );}
+				});
+			});
+		}
+		else $('<div title="Error">fatal error</div>').dialog({ 
+			buttons: [
+			          {
+			        	  text: "Ok",
+			        	  click: function() { $(this).dialog("close"); }
+			          }
+			          ] 
+		});
+	});*/
+}
+
+$(function(){
+	initUploader('<?php echo $this->url(array('controller'=>'uploader','action'=>'index'));?>','<?php echo $this->baseUrl('upload/'.$this->user);?>','<?php echo str_replace("\n", ' ', $item_input);?>');
+	$('.files').sortable({
+		connectWith: "ul",
+		items:"li:not(.listtitle)",
+		stop:function(){
+			if ($('#framebox li').length>=2) {
+				$('#files').sortable('option','connectWith','');
+			}
+			else {
+				$('#files').sortable('option','connectWith','ul');
+			}
+			file=$('#trash h4').text();
+			$('#trash li').remove();
+			if (file.length) {
+				$.ajax({
+					url : '<?php echo $this->url(array('controller'=>'delete','action'=>'index'));?>',
+					type: 'post',
+					data : {'file':file}
+				});
+			}
+		}
+	});
+	$('.files').disableSelection();
+});
+<?php $this->headScript()->captureEnd();?>
+
+<div id="upload" ><span>Upload File</span></div><span id="status" ></span>
+
+<ul id="files" class="files" >
+	<li class="listtitle"><?php echo $this->t->_('FILE_DISP');?></li>
+<?php 
+
+if ($dp = @opendir(APPLICATION_PATH.'/../upload/'.$this->user)) 
+{
+	while($file = readdir($dp)) {
+		if (($file!=".")&&($file!="..")&&is_file(APPLICATION_PATH.'/../upload/'.$this->user.'/'.$file)&&!strstr($file, "thumb")&&($file!="prew.gif"))
+		echo '
+	<li class="success">
+		<h4>'.$file.'</h4>
+		'.$this->image('/upload/'.$this->user.'/thumb'.$file,$file,$file).$item_input.
+		'</li>';
+	}
+}
+else $this->log->notice("cartella ".APPLICATION_PATH.'/../upload/'.$this->user.'inesistente');
+?>
+</ul>
+<ul class="files" id="framebox">
+<li class="listtitle"><?php echo $this->t->_('FILE_ON_WORK');?></li>
+</ul>
+
+<div class="form">
+	<div><input onclick="" type="checkbox" checked="checked" name="dimT" value="true" ><?php echo $this->t->_('DIMTOT');;?></div>
+	<div>x <input name="x" type="number" min="32" value="150" size="4" maxlength="4" style="width:70px;">px</div>
+	<div>y <input name="y" type="number" min="32" value="150" size="4" maxlength="4" style="width:70px;">px</div>
+	<div><input name="prop" type="checkbox" checked="checked" value="true"><?php echo $this->t->_('PROP');?></div>
+	<div><input checked="checked" onclick="" name="delayTot" type="checkbox" value="true"><?php echo $this->t->_('DELAY');?><input name="delayT" type="number" value="100" min="10" size="5" maxlength="5" style="width:70px;"></div>
+	<div><input type="radio" checked="checked" name="frameadd" value="2"><?php echo $this->t->_('REPLACE');?><input type="radio" name="frameadd" value="1"><?php echo $this->t->_('COMBINE');?></div>
+	<div><button onclick="submitimg();"><?php echo $this->t->_('CREATE');?></button></div>
+	
+</div>
+<ul id="trash"  class="files" title="<?php echo $this->t->_('TRASH_DESC');?>"></ul>

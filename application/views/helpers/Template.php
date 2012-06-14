@@ -104,8 +104,8 @@ class Zend_View_Helper_Template extends Zend_View_Helper_Abstract
 		return $html;
 	}
 
-	function button($url,$text='',$class='') {
-		return '<button class="button '.$class.'" title="" onclick="location.href=\''.$url.'\';">'.$text.'</button>';
+	function button($url,$text='',$class='',$title='') {
+		return '<button class="button '.$class.'" title="'.$title.'" onclick="location.href=\''.$url.'\';">'.$text.'</button>';
 	}
 	/**
 	 * Sets the view field
