@@ -40,3 +40,12 @@ SEND@Invia
 RESEND@Il tuo account non è attivo, se non hai ricevuto l'email puoi rispedira reinserendo l'indirizzo giusto
 REG_SUCC@Registrazione avvenuta con successo
 CTRL_MAIL@Controlla la tua email.
+NofFrame@Numero di fotogrammi da utilizzare
+VERTICAL@Verticale
+HORIZONTAL@Orizzontale
+CUSTOM_SCROLL@Funzione personalizzata
+TOP@alto
+BOTTOM@basso
+LEFT@sinistra
+RIGTH@destra
+DIM_FRAME@dimensione cornice
