@@ -1,6 +1,6 @@
 <?php
 
-class Form_scroll extends Zend_Form
+class Form_Scroll extends Zend_Form
 {
 
     public function init()
@@ -22,14 +22,14 @@ class Form_scroll extends Zend_Form
         $this->addElement($fy);
         
         $name=new Zend_Form_Element_Text('name');
-        $file=new Zend_Validate_File_NotExists();
+        $file=new Zend_Validate_File_Exists();
         $path=Zend_Registry::get('userPath');
         $file->setDirectory($path);
         $name->addValidator($file);
         $this->addElement($name);
         
         $delay=$this->createElement('text', 'delay');
-        $delayT->addValidator('Int')->addValidator('GreaterThan',null,array('min'=>'10'));
+        $delay->addValidator('Int')->addValidator('GreaterThan',null,array('min'=>'9'));
         $this->addElement($delay);
         
         $prop=new Zend_Form_Element_Checkbox('prop');
@@ -51,11 +51,11 @@ class Form_scroll extends Zend_Form
         $this->addElement($custom);
         
         $fox=$this->createElement('text', 'fox');
-        $fox->addValidator('Regex',null,array('pattern' => '^[tep\d\+\-\*\/\^\(\)]+?$'));
+        $fox->addValidator('Regex',null,array('pattern' => '/^[tep\d\+\-\*\/\^\(\)]+?$/'));
         $this->addElement($fox);
         
-        $fy=$this->createElement('text', 'foy');
-        $foy->addValidator('Regex',null,array('pattern' => '^[tep\d\+\-\*\/\^\(\)]+?$'));
+        $foy=$this->createElement('text', 'foy');
+        $foy->addValidator('Regex',null,array('pattern' => '/^[tep\d\+\-\*\/\^\(\)]+?$/'));
         $this->addElement($foy);
     }
 

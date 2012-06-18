@@ -14,15 +14,10 @@ class MakeController extends Zend_Controller_Action
 		if ($auth->hasIdentity()) $user=$auth->getIdentity()->id;
 		else $user=Model_guest::getgid();
 		$path=APPLICATION_PATH.'/../upload/'.$user;
-		$error=imagecreatetruecolor(200, 50);
-		$white=imagecolorallocate($error, 255, 255,255);
-		$red=imagecolorallocate($error, 255, 0, 0);
 		//@todo implementare l'opzione dimensone diversa ad ogni immagine
 		if ($_POST['type']=="frame") {// creo i frame
-			
 			$form=new Form_Frame();
 			if ($form->isValid($_POST)) {
-				imagedestroy($error);
 				//rimuovere le vecchie immagini!!
 				if ($dp = @opendir($path.'/temp')) {
 					while($file = readdir($dp)) {
@@ -61,23 +56,47 @@ class MakeController extends Zend_Controller_Action
 					 ob_end_clean();*/
 					$thumb->resetObject();
 				}
-				$this->view->output='true';
+				$this->view->output=true;
 
 			}
 			else {
-				imagestring($error, 5, 10, 10, "error data not valid", $red);
-				imagegif($error,$file);
-				imagedestroy($error);
-				$this->view->output='false';
+				$this->view->output=false;
+				$this->view->text=$form->getErrorMessages();
 			}
-			/*
-			 	
-
-
-			*/
 		}
-		elseif ($_POST['type']=='scrool') {
-
+		elseif ($_POST['type']=='scrool') { //scrool
+			$form=new Form_Scroll();
+			if ($form->isValid($_POST)) {
+				//rimuovere le vecchie immagini!!
+				if ($dp = @opendir($path.'/temp')) {
+					while($file = readdir($dp)) {
+						if (($file!=".")&&($file!="..")&&is_file($path.'/temp/'.$file)) {
+							unlink($path.'/temp/'.$file);
+						}
+					}
+				}
+				$data=$form->getValues();
+				include_once 'include/thumb/phpthumb.class.php';
+				$thumb=new phpthumb();
+				include_once 'include/thumb/phpThumb.config.php';
+				$PHPTHUMB_CONFIG['cache_directory'] = $path;
+				$thumb->iar=$data['prop']!="true";
+				$thumb->w=$data['x'];
+				$thumb->h=$data['y'];
+				$thumb->src=$path.'/'.$data['name'];
+				$thumb->f='gif';
+				$thumb->GenerateThumbnail();
+				$thumb->far='T';
+				//$thumb->gdimg_output;
+				$thumb->RenderToFile($path."/temp/(100)file0.gif");
+				$thumb->RenderToFile($path."/temp/(100)file1.gif");
+				//
+				$this->view->output=true;
+			}
+			else {
+				$this->view->output=false;
+				$this->view->text=$form->getErrors();
+			}
 		}
 		else {//processing
 			$data['frameadd']=(int)$_POST['frameadd'];

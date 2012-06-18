@@ -4,7 +4,8 @@ function submitimg() {
 	post={type:'scrool'}
 	post.name=$('#framebox h4').text();
 	submit('form',post,'<?php echo $this->url(array('controller'=>'make','action'=>'index'));?>',function(data) {
-		if (data) {
+		//mess=data.mess.toString();
+		if (data.bool) {
 			post.type='processing';
 			submit('form',post,'<?php echo $this->url(array('controller'=>'make','action'=>'index'));?>',function (data){
 				$('<div><img src="<?php echo $this->baseUrl('/upload/'.$this->user);?>/temp/prew.gif"></div>').dialog({
@@ -12,7 +13,7 @@ function submitimg() {
 				});
 			});
 		}
-		else $('<div title="Error">fatal error</div>').dialog({ 
+		else $('<div title="Error">fatal error </div>').dialog({ 
 			buttons: [
 			          {
 			        	  text: "Ok",
@@ -77,8 +78,9 @@ else $this->log->notice("cartella ".APPLICATION_PATH.'/../upload/'.$this->user.'
 <div class="form">
 	<div><?php echo $this->t->_('NofFrame');?><input type="number" min="2" max="50" name="nframe" value="2" ></div>
 	<div><?php echo $this->t->_('DELAY');?><input name="delay" type="number" min="10" value="10" size="4" maxlength="4" style="width:70px;">cs</div>
-	<div>x <input name="x" type="number" min="32" value="150" size="4" maxlength="4" style="width:70px;">px</div>
-	<div>y <input name="y" type="number" min="32" value="150" size="4" maxlength="4" style="width:70px;">px</div>
+	<div>
+		<?php echo $this->t->_('DIMENTION');?> x <input name="x" type="number" min="32" value="150" size="4" maxlength="4" style="width:70px;">px
+		y <input name="y" type="number" min="32" value="150" size="4" maxlength="4" style="width:70px;">px</div>
 	<div>
 		<?php echo $this->t->_('DIM_FRAME');?> x<input name="fx" type="number" min="32" value="150" size="4" maxlength="4" style="width:70px;">px
 		y <input name="fy" type="number" min="32" value="150" size="4" maxlength="4" style="width:70px;">px

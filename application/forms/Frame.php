@@ -14,9 +14,6 @@ class Form_Frame extends Zend_Form
         $name=new Zend_Form_Element_MultiCheckbox('name');
         $name->setRegisterInArrayValidator(false);
         $file=new Zend_Validate_File_NotExists();
-        /*$auth=Zend_Auth::getInstance();
-        if ($auth->hasIdentity()) $user=$auth->getIdentity()->id; else $user=Model_guest::getgid();
-        $path=APPLICATION_PATH.'/../upload/'.$user;*/
         $path=Zend_Registry::get('userPath');
         $file->setDirectory($path);
         $name->addValidator($file);

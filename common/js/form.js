@@ -23,6 +23,7 @@ function submit(inputClass,post,action,callback) {
 		url: action,
 		type: 'post',
 		data: post,
+		dataType: 'json',
 		success:callback
 	});
 }
