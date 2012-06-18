@@ -21,6 +21,11 @@ class Form_Scroll extends Zend_Form
         $fy->addValidator('Int')->addValidator('GreaterThan',null,array('min'=>'31'));
         $this->addElement($fy);
         
+        $nframe=$this->createElement('text', 'nframe');
+        $nframe->addValidator('Int')->addValidator('GreaterThan',null,array('min'=>'1'))
+        	->addValidator('LessThan',null,array('max'=>'51'));
+        $this->addElement($nframe);
+        
         $name=new Zend_Form_Element_Text('name');
         $file=new Zend_Validate_File_Exists();
         $path=Zend_Registry::get('userPath');
@@ -44,6 +49,11 @@ class Form_Scroll extends Zend_Form
         $start=new Zend_Form_Element_Radio('start');
         $start->addMultiOptions(array('1'=>'1','2'=>'2'));
         $this->addElement($start);
+        
+        $fb=new Zend_Form_Element_Checkbox('fb');
+        $fb->setCheckedValue('true');
+        $fb->setUncheckedValue('false');
+        $this->addElement($fb);
         
         $custom=new Zend_Form_Element_Checkbox('custom');
         $custom->setCheckedValue('true');

@@ -94,6 +94,7 @@ else $this->log->notice("cartella ".APPLICATION_PATH.'/../upload/'.$this->user.'
 		<input name="start" type="radio" value="1" checked="checked"/><?php echo $this->t->_('TOP');?>/<?php echo $this->t->_('LEFT');?>
 		<input name="start" type="radio" value="2" /><?php echo $this->t->_('BOTTOM');?>/<?php echo $this->t->_('RIGTH');?>
 	</div>
+	<div><input  name="fb" type="checkbox" value="true"><?php echo $this->t->_('FORWARD_BACK');?></div>
 	<div class="beta"><input onclick="if ($(this).attr('checked')) $('#cf').show(); else $('#cf').hide()" name="custom" type="checkbox" value="true"><?php echo $this->t->_('CUSTOM_SCROLL');?></div>
 	<div id="cf" style="display:none;">
 		<div>x=Fx(t) <input name="fox" value="t" size="4" maxlength="4" style="width:70px;">px</div>

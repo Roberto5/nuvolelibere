@@ -76,6 +76,7 @@ class MakeController extends Zend_Controller_Action
 					}
 				}
 				$data=$form->getValues();
+				
 				include_once 'include/thumb/phpthumb.class.php';
 				$thumb=new phpthumb();
 				include_once 'include/thumb/phpThumb.config.php';
@@ -85,13 +86,34 @@ class MakeController extends Zend_Controller_Action
 				$thumb->h=$data['y'];
 				$thumb->src=$path.'/'.$data['name'];
 				$thumb->f='gif';
+				$thumb->far='T';$bool=true;
 				$thumb->GenerateThumbnail();
-				$thumb->far='T';
-				//$thumb->gdimg_output;
-				$thumb->RenderToFile($path."/temp/(100)file0.gif");
-				$thumb->RenderToFile($path."/temp/(100)file1.gif");
-				//
-				$this->view->output=true;
+				$thumb->RenderToFile($path.'/temp/base.gif');
+				$src=imagecreatefromgif($path.'/temp/base.gif');
+				$data['x']=imagesx($src);
+				$data['y']=imagesy($src);
+				//unlink($path.'/temp/base.gif');
+				$coord=new Model_function('SimpleScrool',$data);
+				$delay=$data['delay'];
+				
+				for ($i = 0; $i < $data['nframe']; $i++) {
+					$img=imagecreatetruecolor($data['fx'], $data['fy']);
+					$c=$coord->get($i);
+					imagecopy($img, $src, 0, 0, $c['x'], $c['y'], $data['fx'], $data['fy']);
+					$b=imagegif($img,$path."/temp/($delay)file$i.gif");
+					imagedestroy($img);
+				}
+				if ($data['fb']=='true') {
+					for ($t = $i-2; $i < $data['nframe']*2-2; $i++,$t--) {
+						$img=imagecreatetruecolor($data['fx'], $data['fy']);
+						$c=$coord->get($t);
+						imagecopy($img, $src, 0, 0, $c['x'], $c['y'], $data['fx'], $data['fy']);
+						imagegif($img,$path."/temp/($delay)file$i.gif");
+						imagedestroy($img);
+					}
+				}
+				$this->view->text=array($data,$coord->scaley);
+				$this->view->output=$bool;
 			}
 			else {
 				$this->view->output=false;
@@ -103,7 +125,7 @@ class MakeController extends Zend_Controller_Action
 			$path.='/temp';
 			if ($dp = @opendir($path)) {
 				while($file = readdir($dp)) {
-					if (($file!=".")&&($file!="..")&&is_file($path.'/'.$file)&&($file!="prew.gif")) {
+					if (($file!=".")&&($file!="..")&&is_file($path.'/'.$file)&&($file!="prew.gif")&&(preg_match("/\(\d+\)file\d+\.gif/", $file))) {
 						preg_match("/file\d+/", $file,$index);
 						$index=str_replace("file","",$index[0]);
 						$frames[$index]=$path.'/'.$file;
